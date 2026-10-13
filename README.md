@@ -1,0 +1,193 @@
+# Free LLM APIs Router
+
+A command-line Multi-LLM Router that sends the same prompt to every configured provider in parallel, evaluates the usable answers, and ranks them using a weighted score.
+
+The project currently supports Groq, Gemini, OpenRouter, Cohere, and Mistral through OpenAI-compatible APIs. A provider is active only when its API key is present, so you can run the router with any subset of them.
+
+> API availability, model access, quotas, and pricing are controlled by each provider and may change. The project does not guarantee that every configured model remains free or available.
+
+## Features
+
+- Parallel requests to all active providers with `asyncio`
+- Provider-specific timeouts, token limits, and retry counts
+- Retries for timeouts and HTTP `429`, `500`, `502`, `503`, and `504`
+- Detection of failed and truncated responses
+- Anonymous answer judging with Groq when it is configured
+- Neutral quality score when Groq is unavailable as the judge
+- Weighted ranking and automatic best/fallback selection
+- No hardcoded credentials
+
+## How it works
+
+```text
+User prompt
+    |
+    v
+Parallel provider requests
+    |-- Groq
+    |-- Gemini
+    |-- OpenRouter
+    |-- Cohere
+    `-- Mistral
+    |
+    v
+Timeout, retry, failure, and truncation handling
+    |
+    v
+Anonymous quality judge
+    |
+    v
+Weighted scoring
+    |-- Quality:     40%
+    |-- Completion:  25%
+    |-- Latency:     20%
+    `-- Reliability: 15%
+    |
+    v
+Best provider + fallback provider
+```
+
+Inference requests run in parallel. Quality evaluation runs afterward, so the displayed inference time and judge time are reported separately.
+
+## Provider configuration
+
+The defaults live in `PROVIDER_CONFIG` inside `app.py`.
+
+| Provider | Environment variable | Default model | Timeout | Max tokens | Retries |
+|---|---|---|---:|---:|---:|
+| Groq | `GROQ_API_KEY` | `openai/gpt-oss-20b` | 10s | 700 | 1 |
+| Gemini | `GEMINI_API_KEY` | `gemini-3.8-flash` | 12s | 700 | 0 |
+| OpenRouter | `OPENROUTER_API_KEY` | `nvidia/nemotron-3-ultra-550b-a55b:free` | 10s | 700 | 0 |
+| Cohere | `COHERE_API_KEY` | `command-a-plus-05-2026` | 10s | 1000 | 1 |
+| Mistral | `MISTRAL_API_KEY` | `mistral-small-latest` | 10s | 700 | 0 |
+
+If a key is missing, the provider is skipped and the application continues with the remaining configured providers.
+
+## Scoring
+
+Each usable response receives a score from 0 to 100:
+
+```text
+Final score =
+    quality * 0.40
+  + completion * 0.25
+  + latency * 0.20
+  + reliability * 0.15
+```
+
+- **Quality:** the anonymous judge score. If Groq is unavailable or judging fails, usable answers receive `50`.
+- **Completion:** `100` for a completed response and `50` for a truncated response.
+- **Latency:** decreases linearly from `100` to `0` as latency approaches the provider timeout.
+- **Reliability:** `100` on the first successful attempt and `70` after a retry.
+- **Failed requests:** always receive a final score of `0`.
+
+The highest-scoring usable response becomes the best provider. The next highest-scoring response becomes the fallback.
+
+## Requirements
+
+- Windows PowerShell
+- Python 3.13 or another Python 3 version compatible with the pinned dependencies
+- At least one provider API key
+
+## Setup on Windows
+
+1. Open PowerShell in the project folder.
+
+2. Create and activate a virtual environment:
+
+   ```powershell
+   py -m venv .venv
+   .\.venv\Scripts\Activate.ps1
+   ```
+
+   If PowerShell blocks activation for the current process, run:
+
+   ```powershell
+   Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+   .\.venv\Scripts\Activate.ps1
+   ```
+
+3. Install the dependencies:
+
+   ```powershell
+   python -m pip install --upgrade pip
+   python -m pip install -r requirements.txt
+   ```
+
+4. Create your local environment file:
+
+   ```powershell
+   Copy-Item .env.example .env
+   ```
+
+5. Open `.env` and add one or more keys:
+
+   ```dotenv
+   GROQ_API_KEY=your_key_here
+   GEMINI_API_KEY=your_key_here
+   OPENROUTER_API_KEY=your_key_here
+   COHERE_API_KEY=your_key_here
+   MISTRAL_API_KEY=your_key_here
+   ```
+
+   Leave unused values empty or remove their lines. Never commit `.env`.
+
+## Run
+
+```powershell
+python app.py
+```
+
+Enter a prompt when `You:` appears. Type `exit` to close the application.
+
+On startup, the application lists active providers and reports missing keys as skipped. After each prompt, it prints every provider result, timing, status, quality score, final score, the fastest successful provider, the best provider, and the fallback.
+
+## Troubleshooting
+
+### No API providers configured
+
+No recognized key was loaded. Confirm that `.env` is in the same folder as `app.py`, at least one supported variable contains a value, and you started the application from the project folder.
+
+### A provider is skipped
+
+Add that provider's environment variable to `.env`. A skipped provider does not stop the others.
+
+### HTTP 429 or 5xx errors
+
+The provider may be rate-limited, overloaded, or temporarily unavailable. Providers with configured retries wait two seconds before retrying. Other providers still return their own results.
+
+### Request timed out
+
+The provider exceeded its configured timeout. Providers with retries try again; otherwise the request is marked as failed.
+
+### Judge warning
+
+If the Groq judge fails or returns invalid JSON, the router continues and assigns a neutral quality score of `50` to each usable answer.
+
+### A response is truncated
+
+The provider reached its token limit. The response remains eligible, but its completion score is reduced.
+
+## Security
+
+- `.env` and `.env.*` are ignored by Git; `.env.example` is the only exception.
+- The repository should contain variable names and placeholders only, never real API keys.
+- If a key is exposed, revoke it in the provider dashboard before doing anything else. Removing it from the latest commit is not enough because Git history may retain it.
+
+## Project structure
+
+```text
+Free-LLM-APIs/
+|-- app.py            # Router, provider clients, judge, scoring, and CLI
+|-- requirements.txt  # Pinned Python dependencies
+|-- .env.example      # Safe configuration template
+|-- .gitignore        # Secrets, virtual environments, caches, and editor files
+`-- README.md          # Setup, usage, architecture, and troubleshooting
+```
+
+## Possible next steps
+
+- Add automated tests for scoring and JSON extraction
+- Add structured run logging and historical benchmarks
+- Track provider cost and token usage
+- Expose the router through FastAPI or a small web interface
