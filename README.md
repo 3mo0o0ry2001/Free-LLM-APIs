@@ -168,6 +168,31 @@ If the Groq judge fails or returns invalid JSON, the router continues and assign
 
 The provider reached its token limit. The response remains eligible, but its completion score is reduced.
 
+## Arabic evaluation
+
+`run_arabic_eval.py` runs a 20-question Arabic test set (`eval_set_ar.jsonl`) through the router and scores every provider with rule-based checks instead of an LLM judge.
+
+The set covers Egyptian, Gulf, Levantine and Maghrebi dialects, grammar, diacritics, Arabic and Latin numerals, dialect sentiment, sarcasm, e-commerce intent, Arabizi, JSON extraction, instruction following, and a hallucination test about a book that does not exist.
+
+Answers are normalized before checking (hamza forms, alef maqsura, ta marbuta, diacritics, tatweel, Arabic-Indic digits). An Arabic question answered mostly in English counts as a failure.
+
+```powershell
+python run_arabic_eval.py --runs 3 --delay 4
+python run_arabic_eval.py --runs 3 --providers Groq,Cohere,OpenRouter
+python run_arabic_eval.py --runs 1 --limit 1 --no-judge --delay 0   # quick check
+```
+
+Results go to `eval_results/`: a CSV with every answer, its failed checks and any provider error, and a JSON summary with pass rates per provider and per category.
+
+Limitations:
+
+- Groq is both a contestant and the quality judge, so `avg_judge_quality` is biased for Groq. The main metric is the deterministic pass rate.
+- Keyword checks can be fooled by long open-ended answers. Hallucination results were also verified by hand.
+- Free tiers change. Gemini's free tier allowed 20 requests per day for the configured model, which is not enough for a 3-run evaluation.
+- `leaked_reasoning_%` flags answers where the model's reasoning text appears in the output. `pass_rate_excl_leaks_%` shows the pass rate on the remaining answers.
+
+Published results from November 2026 are in `eval_results/` (`*_155458` and `*_162111` are the two full runs).
+
 ## Security
 
 - `.env` and `.env.*` are ignored by Git; `.env.example` is the only exception.
@@ -179,6 +204,9 @@ The provider reached its token limit. The response remains eligible, but its com
 ```text
 Free-LLM-APIs/
 |-- app.py            # Router, provider clients, judge, scoring, and CLI
+|-- run_arabic_eval.py # Arabic evaluation runner
+|-- eval_set_ar.jsonl # 20 Arabic test questions with rule-based checks
+|-- eval_results/     # Published evaluation runs
 |-- requirements.txt  # Pinned Python dependencies
 |-- .env.example      # Safe configuration template
 |-- .gitignore        # Secrets, virtual environments, caches, and editor files

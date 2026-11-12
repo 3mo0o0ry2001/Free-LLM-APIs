@@ -1,0 +1,137 @@
+{
+  "summary": [
+    {
+      "provider": "Groq",
+      "model": "openai/gpt-oss-20b",
+      "n": 60,
+      "pass_rate_%": 86.7,
+      "failure_rate_%": 0.0,
+      "truncated_%": 0.0,
+      "wrong_language_%": 0.0,
+      "leaked_reasoning_%": 0.0,
+      "pass_rate_excl_leaks_%": 86.7,
+      "first_error": "",
+      "median_latency_s": 0.8,
+      "avg_judge_quality": 83.2
+    },
+    {
+      "provider": "OpenRouter",
+      "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+      "n": 60,
+      "pass_rate_%": 80.0,
+      "failure_rate_%": 20.0,
+      "truncated_%": 0.0,
+      "wrong_language_%": 0.0,
+      "leaked_reasoning_%": 0.0,
+      "pass_rate_excl_leaks_%": 80.0,
+      "first_error": "Request timed out after 10 seconds",
+      "median_latency_s": 3.2,
+      "avg_judge_quality": 85.0
+    },
+    {
+      "provider": "Cohere",
+      "model": "command-a-plus-05-2026",
+      "n": 60,
+      "pass_rate_%": 45.0,
+      "failure_rate_%": 0.0,
+      "truncated_%": 1.7,
+      "wrong_language_%": 20.0,
+      "leaked_reasoning_%": 35.0,
+      "pass_rate_excl_leaks_%": 69.2,
+      "first_error": "",
+      "median_latency_s": 0.8,
+      "avg_judge_quality": 64.5
+    }
+  ],
+  "pass_rate_by_category_%": {
+    "arabizi": {
+      "Groq": 67,
+      "OpenRouter": 67,
+      "Cohere": 0
+    },
+    "diacritics": {
+      "Groq": 0,
+      "OpenRouter": 100,
+      "Cohere": 67
+    },
+    "dialect_egyptian": {
+      "Groq": 100,
+      "OpenRouter": 100,
+      "Cohere": 33
+    },
+    "dialect_gulf": {
+      "Groq": 100,
+      "OpenRouter": 100,
+      "Cohere": 100
+    },
+    "dialect_levantine": {
+      "Groq": 100,
+      "OpenRouter": 100,
+      "Cohere": 100
+    },
+    "dialect_maghrebi": {
+      "Groq": 100,
+      "OpenRouter": 67,
+      "Cohere": 100
+    },
+    "ecommerce_intent": {
+      "Groq": 100,
+      "OpenRouter": 67,
+      "Cohere": 50
+    },
+    "factual_msa": {
+      "Groq": 100,
+      "OpenRouter": 100,
+      "Cohere": 67
+    },
+    "grammar": {
+      "Groq": 83,
+      "OpenRouter": 100,
+      "Cohere": 50
+    },
+    "hallucination": {
+      "Groq": 100,
+      "OpenRouter": 0,
+      "Cohere": 0
+    },
+    "instruction_following": {
+      "Groq": 100,
+      "OpenRouter": 67,
+      "Cohere": 0
+    },
+    "numerals": {
+      "Groq": 100,
+      "OpenRouter": 100,
+      "Cohere": 0
+    },
+    "reasoning": {
+      "Groq": 100,
+      "OpenRouter": 100,
+      "Cohere": 0
+    },
+    "sentiment_dialect": {
+      "Groq": 100,
+      "OpenRouter": 67,
+      "Cohere": 0
+    },
+    "sentiment_sarcasm": {
+      "Groq": 0,
+      "OpenRouter": 67,
+      "Cohere": 33
+    },
+    "structured_output": {
+      "Groq": 100,
+      "OpenRouter": 67,
+      "Cohere": 33
+    },
+    "transliteration": {
+      "Groq": 100,
+      "OpenRouter": 67,
+      "Cohere": 100
+    }
+  },
+  "caveats": [
+    "Groq is both judge and contestant: avg_judge_quality is biased for Groq.",
+    "Free-tier models/quotas change; results are a snapshot of this date."
+  ]
+}
