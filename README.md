@@ -193,6 +193,46 @@ Limitations:
 
 Published results from November 2026 are in `eval_results/` (`*_155458` and `*_162111` are the two full runs).
 
+## Benchmark v1 (100 questions, reference-checked)
+
+`evals/` measures the router on a fixed 100-question set: factual (18), hallucination traps (2), reasoning (20), coding (20), instruction following (10) and Arabic (30, including the 20 questions above). Every question has a deterministic check, so the main score does not depend on an LLM judge:
+
+- reasoning and numeric facts: the final number must match
+- coding: the extracted function runs against hidden unit tests in a separate Python process with a 10 s timeout
+- instruction following: exact format rules (line counts, JSON keys, casing, word limits)
+- Arabic: the normalized keyword and format checks from `eval_set_ar.jsonl`
+
+Each question also stores a `reference` answer that must pass its check and a `wrong` answer that must fail it. `pytest` checks both for all 100 questions.
+
+```powershell
+python -m pip install -r requirements-dev.txt
+python -m pytest                                                     # offline, no API calls
+python -m evals.run --limit 3 --run-id smoke                         # quick check with real APIs
+python -m evals.run --run-id v1                                      # full run; rerun the same command to resume
+python -m evals.analyze eval_results/runs/v1                         # re-score saved outputs, no API calls
+```
+
+Each run folder in `eval_results/runs/<run-id>/` contains:
+
+| File | Contents |
+|---|---|
+| `config.json` | question-set hash, models, timeouts, judge model, seed, git commit |
+| `raw.jsonl` | every answer, latency, status, error and judge output, appended as the run goes |
+| `rate_limited.jsonl` | questions set aside because of a 429/quota error; resuming asks them again |
+| `answers.csv` | every answer with pass/fail and the checks it failed |
+| `failures_for_review.csv` | failed answers to spot-check by hand |
+| `summary.json`, `results.md` | all metrics |
+
+Metrics per provider: win rate (how often the router picked it), reference accuracy with a 95% bootstrap CI, average weighted score, average judge score, median and p95 latency, and error, timeout, rate-limit, truncation and leaked-reasoning rates. Reference accuracy is strict (the answer must be what the prompt asked for). *Lenient accuracy* also accepts short-answer questions whose final answer is right but is preceded by leaked reasoning or glued to a duplicate (`72.72`), and *right but dirty* is the gap; every rescued answer is flagged in `answers.csv`. Router metrics: accuracy of the router's pick compared with the best single provider and with an oracle that picks any correct answer.
+
+The judge audit reports how often the judge scores the correct answer above the wrong one in the same question, the judge failure rate, provider bias and position bias on questions where every answer was correct, and length bias.
+
+Notes:
+
+- The judge shuffles answer order with a seed (`--seed`). Set `JUDGE_MODEL` to use a Groq model that is not a contestant.
+- Coding checks execute model-written code on your machine. Use `--no-exec` to skip them; the analysis then drops the coding questions.
+- Free tiers: a full run makes about 100 calls per provider and about 200 to Groq (contestant + judge). Use `--providers` to leave out a provider whose daily quota is too small.
+
 ## Security
 
 - `.env` and `.env.*` are ignored by Git; `.env.example` is the only exception.
@@ -206,6 +246,8 @@ Free-LLM-APIs/
 |-- app.py            # Router, provider clients, judge, scoring, and CLI
 |-- run_arabic_eval.py # Arabic evaluation runner
 |-- eval_set_ar.jsonl # 20 Arabic test questions with rule-based checks
+|-- evals/            # Benchmark v1: questions_v1.jsonl, checks, runner, analyzer
+|-- tests/            # Offline tests (fake providers, no API calls)
 |-- eval_results/     # Published evaluation runs
 |-- requirements.txt  # Pinned Python dependencies
 |-- .env.example      # Safe configuration template
@@ -215,7 +257,6 @@ Free-LLM-APIs/
 
 ## Possible next steps
 
-- Add automated tests for scoring and JSON extraction
 - Add structured run logging and historical benchmarks
 - Track provider cost and token usage
 - Expose the router through FastAPI or a small web interface

@@ -1,0 +1,264 @@
+﻿run,id,category,provider,model,status,latency_s,attempts,error_kind,passed,passed_lenient,rescued_by_lenient,failed_checks,leaked_reasoning,length_chars,judge_status,judge_score,judge_position,final_score,router_best,error,answer,check_was_wrong (fill in y/n)
+1,fact_en_06,factual,Cohere,command-a-plus-05-2026,success,1.175671200002398,1,,False,True,True,max_words,True,513,ok,30.0,2,69.65,False,,"<EOS_TOKEN>The user asks: ""How many bones are in the typical adult human body? Reply with only the final number."" The instruction: ""Answer the user's question directly. Return only the final answer. Do not output planning, reasoning, drafts, analysis, or calculations.""
+
+Thus I need to output the number of bones in a typical adult human body. The typical number is 206. However, there can be variation due to fused bones, but typical adult human has 206 bones.
+
+Thus final answer: ""206"". Ensure no extra text.206",
+1,fact_en_08,factual,Cohere,command-a-plus-05-2026,success,0.5673143999993044,1,,False,True,True,max_words,True,208,ok,0.0,1,58.87,False,,"<EOS_TOKEN>The user asks: ""What is the atomic number of carbon? Reply with only the final number.""
+
+We need to answer directly with only the final number. The atomic number of carbon is 6.
+
+Thus answer: ""6"".6",
+1,fact_en_17,factual,Cohere,command-a-plus-05-2026,success,1.4049742000024708,1,,False,True,True,max_words,False,604,ok,70.0,1,85.19,False,,"32°F
+
+But the user asked: ""Reply with only the final number."" So I should output just ""32"". However, the instruction says: ""Answer the user's question directly. Return only the final answer. Do not output planning, reasoning, drafts, analysis, or calculations."" The user wants only the final number. So I should output ""32"". But the system says: ""Answer the user's question directly. Return only the final answer."" That could be interpreted as just the number, not the unit. The user explicitly said: ""Reply with only the final number."" So I should output ""32"". No unit, no text. So final answer: ""32"".32",
+1,fact_en_19,hallucination,Groq,openai/gpt-oss-20b,truncated,1.194208000000799,1,,False,False,False,contains_any,False,2871,ok,40.0,0,61.11,False,,"**The Glass Orchard of Port Vellum** (1897) – Henrietta Crane  
+*A lush, atmospheric Victorian tale of love, duty, and the strange magic that lingers in the mist‑shrouded harbor town of Port Vellum.*
+
+---
+
+### Setting  
+Port Vellum, a quiet seaside town on the western coast of England, is famed for its peculiar “glass orchard”—a grove of crystal‑like trees that glimmer with a faint, otherworldly light. The orchard is a local legend: it was planted centuries ago by the mysterious Mariner’s Daughter, and it is said that anyone who walks beneath its branches will see glimpses of their future.
+
+### Main Characters  
+
+| Character | Description |
+|-----------|-------------|
+| **Isabella “Bella” Marlowe** | A bright, curious 17‑year‑old orphan raised by her stern Aunt Lydia. Bella longs for adventure and a place of her own. |
+| **Captain Alden Rook** | The charismatic, enigmatic sea‑captain of the *Sea‑Rose*. He is the town’s most sought‑after bachelor and a secret keeper of the orchard’s history. |
+| **Aunt Lydia Marlowe** | Bella’s guardian, a widowed widow who runs the town’s apothecary. She is practical, protective, and secretly harbors doubts about the orchard’s magic. |
+| **Elias Wren** | A wandering scholar and the only other person in Port Vellum who knows the orchard’s true story. He becomes an unlikely ally to Bella. |
+| **Lady Eleanor Vellum** | The current heir to the Vellum estate and the rightful custodian of the orchard. She is both regal and fearful of the orchard’s power. |
+
+### Plot Summary
+
+1. **The Orchard’s Secret**  
+   The novel opens with the town’s annual “Glass Gala,” a celebration where townsfolk gather to admire the orchard’s luminous branches. Bella is drawn to the orchard, sensing that it might be the key to her future. She meets Captain Rook, who warns her of the orchard’s “dangerous truths.”  
+
+2. **A Mysterious Invitation**  
+   Aunt Lydia receives a sealed letter from Lady Eleanor, inviting her to a private meeting at the Vellum estate. The letter hints that the orchard is in peril, as a new, greedy industrialist is planning to harvest the orchard’s crystals for profit. Bella, eager to help, decides to accompany her aunt.  
+
+3. **The Orchard’s History Unveiled**  
+   In the Vellum estate’s library, Bella meets Elias Wren, who reveals that the orchard was planted by a Mariner’s Daughter who died protecting the town’s secrets. He tells Bella that each crystal in the orchard stores a fragment of a person’s destiny, and the orchard can only be protected if someone willing to sacrifice for its safety steps forward.  
+
+4. **Conflict and Compromise**  
+   Captain Rook, who has secretly loved Bella, proposes a plan: he will lead a small group into the orchard at night to seal a hidden chamber with a special alloy that will render the crystals inert to industrial extraction. Aunt Lydia and Lady Eleanor",
+1,reason_01,reasoning,Cohere,command-a-plus-05-2026,success,1.0834754000024986,1,,False,True,True,final_number,True,313,ok,0.0,1,57.83,False,,"The user asks: ""A train travels 180 km in 2.5 hours. What is its average speed in km/h? Reply with only the final number.""
+
+We need to compute average speed = distance / time = 180 km / 2.5 hours = 72 km/h.
+
+We must output only the final number, presumably ""72"". No units, no extra text.
+
+Thus final answer: 72.72",
+1,reason_05,reasoning,Cohere,command-a-plus-05-2026,success,1.0755175999984203,1,,False,True,True,final_number,False,267,ok,0.0,1,57.85,False,,"50
+
+Wait, let me double-check. If a shirt costs $40 after a 20% discount, that means the discounted price is 80% of the original price (since 100% - 20% = 80%). So if $40 is 80% of the original price, then the original price is $40 / 0.8 = $50. So the answer is 50.50",
+1,reason_06,reasoning,Cohere,command-a-plus-05-2026,success,1.1166572000001906,1,,False,True,True,final_number,False,250,ok,20.0,2,65.77,False,,"Let Bob's current age be B. Then Alice's current age is 2B.
+
+In 5 years, Alice will be 2B + 5, and Bob will be B + 5. Their sum will be (2B + 5) + (B + 5) = 3B + 10 = 40.
+
+Solve: 3B = 30 => B = 10.
+
+Thus Alice's current age is 2B = 20.
+
+Answer: 20.20",
+1,reason_10,reasoning,Cohere,command-a-plus-05-2026,success,0.9827874000002339,1,,False,True,True,final_number,False,241,ok,0.0,2,58.03,False,,"The rectangle has a perimeter of 30 cm and a length of 9 cm.
+
+Perimeter = 2 * (length + width)
+30 = 2 * (9 + width)
+30 = 18 + 2 * width
+2 * width = 30 - 18 = 12
+width = 6 cm
+
+Area = length * width = 9 * 6 = 54 square cm.
+
+The answer is 54.54",
+1,reason_11,reasoning,Cohere,command-a-plus-05-2026,success,0.6474232000000484,1,,False,True,True,final_number,False,193,ok,50.0,1,78.71,False,,"The word ""LEVEL"" has 5 letters with L appearing twice and E appearing twice, and V appearing once. The number of distinct arrangements is given by 5!/(2!2!) = 120/4 = 30. So the answer is 30.30",
+1,reason_15,reasoning,Cohere,command-a-plus-05-2026,success,2.106462300002022,1,,False,True,True,final_number,False,923,ok,50.0,1,75.79,False,,"This problem is a classic rate problem. Let's break it down:
+
+Given: 5 machines make 5 widgets in 5 minutes.
+
+This means:
+- Each machine makes 1 widget in 5 minutes
+- Or equivalently, each machine has a rate of 1/5 widgets per minute
+- Or each machine can make 1 widget in 5 minutes
+
+Now we want to find: How many minutes do 100 machines need to make 100 widgets?
+
+If each machine makes 1 widget in 5 minutes, then:
+- 100 machines can make 100 widgets in the same 5 minutes (since each machine is independently making 1 widget)
+
+So the answer is 5 minutes.
+
+But let me double-check this logic:
+- Rate of 5 machines = 5 widgets / 5 minutes = 1 widget per minute
+- Rate of 1 machine = 1/5 widgets per minute
+- Rate of 100 machines = 100 × (1/5) = 20 widgets per minute
+- To make 100 widgets at 20 widgets per minute = 100 ÷ 20 = 5 minutes
+
+Both approaches give the same answer: 5 minutes.
+
+Therefore, the final answer is:
+
+55",
+1,reason_16,reasoning,Cohere,command-a-plus-05-2026,success,1.5281886999982817,1,,False,True,True,final_number,False,454,ok,30.0,0,68.94,False,,"The sequence given is 2, 6, 12, 20, 30. Let's examine the differences between consecutive terms:
+
+- 6 - 2 = 4
+- 12 - 6 = 6
+- 20 - 12 = 8
+- 30 - 20 = 10
+
+The differences are 4, 6, 8, 10, which increase by 2 each time. So the next difference should be 12. Adding that to 30 gives 42.
+
+Alternatively, these numbers can be expressed as n(n+1) for n starting at 1: 1*2=2, 2*3=6, 3*4=12, 4*5=20, 5*6=30. The next would be 6*7=42.
+
+Thus the next number is 42.42",
+1,reason_17,reasoning,Cohere,command-a-plus-05-2026,success,0.7525964999986172,1,,False,True,True,final_number,False,122,ok,70.0,0,86.49,False,,"The prime numbers less than 30 are: 2, 3, 5, 7, 11, 13, 17, 19, 23, and 29. That's 10 primes. So the final number is 10.10",
+1,reason_18,reasoning,Cohere,command-a-plus-05-2026,success,0.5835908000008203,1,,False,False,False,final_number,False,4,ok,0.0,1,58.83,False,,18.5,
+1,reason_20,reasoning,Cohere,command-a-plus-05-2026,success,1.3252500999988115,1,,False,True,True,not_contains;max_words,False,480,ok,95.0,1,95.35,False,,"To determine the day of the week 100 days from Wednesday, we need to find the remainder when 100 is divided by 7 (since there are 7 days in a week). 
+
+100 ÷ 7 = 14 remainder 2.
+
+So, 100 days is equivalent to 14 weeks and 2 days. After 14 weeks, the day of the week will be the same as the starting day (Wednesday). Then, we add 2 days: Thursday (1 day after Wednesday) and Friday (2 days after Wednesday).
+
+Therefore, 100 days from Wednesday will be Friday.
+
+Answer: Friday.Friday",
+1,code_19,coding,OpenRouter,nvidia/nemotron-3-ultra-550b-a55b:free,truncated,9.98729830000002,1,,False,False,False,python_tests,False,209,ok,30.0,2,39.53,False,,"import re
+
+def parse_duration(s):
+    total = 0
+    for value, unit in re.findall(r'(\d+)([hms])', s):
+        if unit == 'h':
+            total += int(value) * 3600
+        elif unit == 'm':
+            total",
+1,instr_01,instruction,Cohere,command-a-plus-05-2026,success,1.1748188999999911,1,,False,False,False,bullet_items;line_count,True,239,ok,30.0,1,69.65,False,,"User wants exactly three fruits as a bulleted list, each line starting with '- '. Write nothing else. So output:
+
+- Apple
+- Banana
+- Cherry
+
+Make sure exactly three items, each line begins with '- '. No extra text.- Apple
+- Banana
+- Cherry",
+1,instr_06,instruction,Cohere,command-a-plus-05-2026,success,0.7791173999999046,1,,False,False,False,regex_full,True,371,ok,0.0,1,58.44,False,,"<EOS_TOKEN>The user asks: ""In one word only: what color is a clear daytime sky?"" The answer is ""blue"". Must respond with one word only. So answer: ""Blue"". Must be exactly one word. Should be capitalized? The question: ""what color is a clear daytime sky?"" The typical answer: ""blue"". So respond with ""Blue"". One word. Ensure no extra punctuation. Probably just ""Blue"".Blue",
+1,instr_07,instruction,Cohere,command-a-plus-05-2026,success,0.6492178000000877,1,,False,False,False,numbered_items;line_count,True,181,ok,0.0,1,58.7,False,,"User wants a numbered list from 1 to 5 in format '1.', '2.', etc. Write nothing else. So output:
+
+1.
+2.
+3.
+4.
+5.
+
+Probably each on separate line. Ensure no extra text.1.
+2.
+3.
+4.
+5.",
+1,ar_dial_eg_01,arabic,Cohere,command-a-plus-05-2026,success,15.837389699999903,2,,False,False,False,regex_any,True,1324,ok,95.0,2,73.5,True,,"<EOS_TOKEN>السؤال: لو الساعة دلوقتي 3 العصر في القاهرة في شهر نوفمبر، تبقى الساعة كام في دبي؟ قول الساعة بس.
+
+نحتاج نعرف فرق التوقيت بين القاهرة ودبي في شهر نوفمبر.
+
+القاهرة (مصر) بتستخدم توقيت الشرق الأوسط (EET) في الشتاء، UTC+2. في الصيف بتستخدم EDT (UTC+3). في شهر نوفمبر، القاهرة في توقيت الشتاء (بما إن التوقيت الصيفي بيبدأ في آخر جمعة من مارس لآخر جمعة من أكتوبر، على ما أعتقد). في الواقع، مصر كانت بتستخدم التوقيت الصيفي من آخر جمعة في مارس لآخر جمعة في أكتوبر (تقريباً). في شهر نوفمبر، ده توقيت شتوي، UTC+2.
+
+دبي (الإمارات) بتستخدم توقيت الإمارات العربي المتحدة (GST) على مدار السنة: UTC+4. مفيش توقيت صيفي.
+
+وبالتالي فرق التوقيت: دبي UTC+4، القاهرة UTC+2 => دبي ساعة واحدة متقدمة عن القاهرة. يعني لو في القاهرة الساعة 3 العصر، يبقى في دبي الساعة 4 العصر.
+
+وبالتالي الإجابة: 4 العصر.
+
+لكن السؤال: ""قول الساعة بس."" يعني عايزين الساعة بس، مش نص. لكن الإجابة المفروض تكون الساعة، زي ""4:00"". أو ""4 العصر"". السؤال: ""تبقى الساعة كام في دبي؟ قول الساعة بس."" ممكن يتوقع إجابة زي ""4:00"". أو ""4 العصر"". الأفضل نقول ""4:00"". لكن ""قول الساعة بس."" ممكن يعني عايز الساعة بس، مش نص. لكن إجابة نموذجية: ""4:00"". ممكن كمان ""4 العصر"". بما إن السؤال بيقول ""الساعة كام""، ممكن الإجابة ""4"". لكن الأفضل ""4:00"". بما إن قال ""قول الساعة بس.""، أظن عايز الساعة بس، مش نص. ممكن ""4:00"". أو ""4 العصر"". لكن ""الساعة"" ممكن تكون ""4:00"". هقول ""4:00"".4:00",
+1,ar_dial_lev_01,arabic,Groq,openai/gpt-oss-20b,success,0.37918500000000677,1,,False,False,False,contains_any,False,18,ok,80.0,1,91.24,False,,"""لحظة"" أو ""فورًا"".",
+1,ar_gram_01,arabic,Groq,openai/gpt-oss-20b,success,0.4260795000000144,1,,False,False,False,contains_any,False,28,ok,90.0,1,95.15,False,,الطالبُ: مبتدأ مرفوع بالضمة.,
+1,ar_gram_01,arabic,Cohere,command-a-plus-05-2026,success,0.9822672000000239,1,,False,False,False,contains_any,False,71,ok,95.0,0,96.04,True,,"كلمة ""الطالبُ"" هي مبتدأ، مرفوع، وعلامات رفعه هي الضمة الظاهرة على آخره.",
+1,ar_diac_01,arabic,Groq,openai/gpt-oss-20b,success,0.961937799999987,1,,False,False,False,contains_any_raw,False,3,ok,10.0,1,62.08,False,,كتب,
+1,ar_num_01,arabic,Cohere,command-a-plus-05-2026,success,0.6148487999998906,1,,False,False,False,contains_any,False,23,ok,0.0,1,58.77,False,,Two thousand twenty-six,
+1,ar_math_01,arabic,Cohere,command-a-plus-05-2026,success,1.2056387000000086,1,,False,False,False,regex_none;max_words,True,447,ok,80.0,0,89.59,False,,"The user asks: ""A perfume bottle costs $250 and is on sale for 20% off. What is the price after the discount? Write only the number.""
+
+We need to compute 20% off of $250. 20% of 250 = 0.20 * 250 = 50. So price after discount = 250 - 50 = 200.
+
+They want only the number. Probably ""200"". Should we include a currency sign? They said ""Write only the number."" So just ""200"". Probably no decimal. So answer: 200.
+
+We must answer directly, no extra.200",
+1,ar_sent_01,arabic,Cohere,command-a-plus-05-2026,success,1.061054600000034,1,,False,False,False,max_words;arabic_ratio,True,553,ok,20.0,2,65.88,False,,"The user asks: ""Classify the sentiment in the following sentence with only one word (Positive / Negative / Neutral): ""the service was very bad and the agent was delayed by 2 hours"".""
+
+We need to output one word: Positive, Negative, or Neutral. The sentence expresses negative sentiment: service was very bad, agent delayed. So answer: Negative.
+
+We must follow system instruction: ""Answer the user's question directly. Return only the final answer. Do not output planning, reasoning, drafts, analysis, or calculations.""
+
+Thus output just ""Negative"".سلبي",
+1,ar_sent_02,arabic,Groq,openai/gpt-oss-20b,success,0.7010741999999937,1,,False,False,False,contains_any;not_contains,False,5,ok,10.0,1,62.6,False,,محايد,
+1,ar_sent_02,arabic,Cohere,command-a-plus-05-2026,success,0.9017805000000862,1,,False,False,False,contains_any;not_contains;max_words;arabic_ratio,True,370,ok,95.0,0,96.2,True,,"user asks: ""Classify the sentiment in the following sentence using only one word (positive/negative/neutral): ""Wow so fast! Order arrived in just a week 👏"". We need to output a single word: positive/negative/neutral. The sentence: ""Wow so fast! Order arrived in just a week 👏"". The sentiment is positive: expressing surprise and satisfaction. So answer ""positive"".إيجابي",
+1,ar_intent_02,arabic,Cohere,command-a-plus-05-2026,success,1.0746990999998616,1,,False,False,False,max_words;arabic_ratio,True,375,ok,90.0,0,93.85,False,,"<EOS_TOKEN>The user asks: ""Determine the customer's intention in one word from the list: purchase, inquiry, complaint, return. Customer message: ""عندكم عود كمبودي بحجم ٥٠ مل؟ وكم سعره؟""""
+
+We need to output a single word: purchase, inquiry, complaint, return.
+
+The message is asking if they have a certain product and its price. That's an inquiry. So answer: ""inquiry"".استفسار",
+1,ar_translit_01,arabic,Cohere,command-a-plus-05-2026,success,2.3819078999999874,1,,False,False,False,arabic_ratio,True,974,failed,,2,75.24,False,,"The user asks: ""In the context of perfumes, do the terms 'oud' and 'agarwood' refer to the same substance? Answer with either yes or no and then provide a brief explanation in one sentence.""
+
+We need to answer with either yes or no and then a brief explanation in one sentence. So format: ""Yes. ..."" or ""No. ..."" The answer: Yes, they refer to the same substance; oud is the aromatic resin from agarwood. So we can say ""Yes. Oud is the aromatic resin derived from agarwood, so the terms refer to the same material."" That's one sentence after the yes. Ensure it's one sentence explanation. The entire answer must be yes/no then a brief explanation in one sentence. Possibly separate with a period after yes, then the explanation sentence. Could be ""Yes. Oud is the aromatic resin obtained from agarwood, so the terms refer to the same material."" That is one sentence. Good.نعم. عطر العود هو الراتنج العطري المستخرج من خشب الأجار، وبالتالي فإن المصطلحين يشيران إلى نفس المادة.",
+1,ar_arabizi_01,arabic,Cohere,command-a-plus-05-2026,success,0.7762776999998096,1,,False,False,False,contains_any;contains_group_0,False,27,ok,10.0,2,62.45,False,,"""أنا عايز أضحك على 4 أشخاص""",
+1,ar_list_01,arabic,Cohere,command-a-plus-05-2026,success,1.1977630999999747,1,,False,False,False,numbered_items;arabic_ratio,True,561,ok,0.0,1,57.6,False,,"The user asks: ""Name three Arab countries located in the continent of Africa in a numbered list, without any explanation.""
+
+We must comply. Provide a numbered list of three Arab countries in Africa, no explanation. Should be concise.
+
+We need to ensure we only give three items, numbered (1., 2., 3.) and no extra text.
+
+Potential answer: 1. Egypt, 2. Morocco, 3. Tunisia. All are Arab and in Africa.
+
+We must not include any explanation. Just the list.
+
+Thus final answer: ""1. Egypt\n2. Morocco\n3. Tunisia"". Ensure no extra commentary.1. مصر
+2. المغرب
+3. تونس",
+1,ar_halluc_01,arabic,Groq,openai/gpt-oss-20b,truncated,1.19325630000003,1,,False,False,False,contains_any,False,1654,ok,12.0,0,49.91,False,,"**مؤلف الكتاب**  
+الكتاب *“رحلة القمر الأخضر إلى سمرقند”* صدر في القاهرة عام 1820، وتُعزى مؤلفيته إلى **أحمد بن محمد القاضي** (أو “القاضي بن أحمد”)، وهو عالم ومفكر مصري يُعرف بأعماله في الأدب التاريخي والرحلات الأدبية.  
+
+- **متى و أين نُشر؟**  
+  نُشر الكتاب في دار النشر المصرية “مكتبة القاهرة” في 12 مارس 1820، وكانت نسخة مطبوعة من 120 صفحة، مع رسومات توضيحية للمناظر الطبيعية والآثار في سمرقند.  
+
+- **موقعه في الأدب المصري**  
+  يُعدّ كتابه أحد أوائل الروايات الخيالية التي تتناول رحلات فانتازية إلى مدن قديمة، وقد نال إعجاب القراء بفضل أسلوبه السردي الغني والابتكارات الكُتبية التي تجعله يندمج بين السرد التاريخي والرواية الخيالية.
+
+---
+
+## ملخص الكتاب
+
+### 1. مقدمة القصة  
+يبدأ القصة بوصف القمر “الأخضر” (الذي يُمثل في اللغة العربية رمزيةً للفضول والفضولية) وهو يراقب الأرض من السماء، ويتطلع إلى استكشاف أعماق التاريخ والثقافات التي لا تزال في طياتها أسرار. يقرر القمر أن يسافر إلى **سمرقند**، المدينة التي تُعدُّ قلب الحضارة السامانية في آسيا الوسطى.
+
+### 2. وصف القمر الأخضر  
+- يُصوّر القمر الأخضر بعيونٍ لامعة، بريقه يضيء الطرق في الليل، وشخصيته كـ “سافرٍ بين الكواكب”.
+- يحمل معه “حجمه الرمادي” (مجموعة من الكتب القديمة والخرائط) التي يخطط لاستخدامها كدليل في رحلته.
+
+### 3. الرحلة إلى سمرقند  
+- **الطريق**: يقطع القمر مساراً من القاهرة، عبر مصر، ثم عبر الصحراء الكبرى، مروراً بالمنطقة البدوية في الأردن، حتى يصل إلى البغداد ثم يلتقي بـ“الطريق البغدادي” الذي يُرشده إلى آسيا الوسطى.
+- **المناظر**: يصف القمر الأفق الصيني، الصحارى الصفراء، البنية الجسور والتماثيل التي تزين الطرق، وتروي تفاصيل حياة البدو والشوارع المزدحمة.
+
+### 4. وصول القمر إلى سمرقند  
+- يصل القمر إلى سمرقند في ليلةٍ مضيئة، ويُرى المدينة على ضوء القمر الذي يشرق في أرجاء",
+1,ar_halluc_01,arabic,Cohere,command-a-plus-05-2026,success,2.6226934000001165,1,,False,False,False,contains_any,False,675,ok,18.0,1,61.95,True,,"كتاب **""رحلة القمر الأخضر إلى سمرقند""** الصادر في القاهرة عام 1820 هو من تأليف **مصطفى بك الرفاعي** (أو أحيانًا يُنسب إلى **مصطفى الرفاعي**)، وهو كاتب ومترجم مصري من عصر محمد علي باشا.
+
+**ملخص الكتاب:**
+يقدم الكتاب سردًا خياليًا لرحلة تقوم بها سفينة فضائية على شكل هلال (القمر الأخضر) من القاهرة إلى سمرقند، مرورًا بعدة مدن وبلدان في العالم الإسلامي وأوروبا. يجمع السرد بين المغامرة والوصف الجغرافي والثقافي، ويهدف إلى تقديم رؤية تعليمية وتثقيفية للقارئ العربي عن العالم الخارجي، مع دمج عناصر من الفولكلور والتاريخ والأساطير. كما يتضمن الكتاب ملاحظات عن التقدم العلمي والتكنولوجي في أوروبا آنذاك، ويعكس اهتمام المؤلف بنشر المعرفة والتشجيع على الاستكشاف في عصر النهضة المصرية.",
+1,ar_math_02,arabic,Cohere,command-a-plus-05-2026,success,0.8897316999998566,1,,False,True,True,max_words;final_number,True,236,ok,20.0,1,66.22,False,,"The user asks: ""You bought 3 bottles of perfume for 75 AED each. How much did you spend in AED? Write only the number.""
+
+We need to compute 3 * 75 = 225 AED. They want only the number, presumably ""225"". No extra text. So answer: 225.225",
+1,ar_translate_01,arabic,Groq,openai/gpt-oss-20b,success,0.5366206000001057,1,,False,False,False,contains_group_0,False,13,ok,20.0,0,66.93,False,,المؤتمر غدًا.,
+1,ar_intent_03,arabic,Cohere,command-a-plus-05-2026,success,1.002970600000026,1,,False,False,False,max_words;arabic_ratio,True,354,ok,95.0,0,95.99,True,,"The user asks: ""Determine the customer's intention in one word from the list: purchase, inquiry, complaint, return. Customer message: 'The order arrived a week late and the box was broken'"". The intention is a complaint. Could also be return? The message indicates dissatisfaction about delay and broken box, likely a complaint. So answer: complaint.شكوى",
+1,ar_json_02,arabic,Cohere,command-a-plus-05-2026,success,2.225691500000039,1,,False,False,False,json_parse,True,1054,ok,20.0,0,63.55,False,,"the user asks: ""Extract the product name and price from the following sentence and return them in JSON format with only the keys product and price:
+""I bought a Royal Oud perfume for 350 AED""""
+
+We need to output JSON with product and price. The product name: ""Royal Oud perfume"". Price: ""350 AED"". Should we output price as number or string? Probably string including AED? The instruction: ""return them in JSON format with only the keys product and price"". It doesn't specify format of price. Could be numeric or string. Safer to include the currency as part of price? Usually they'd want price numeric. But they said extract product name and price, likely include the currency as part of price? Could be either. But to be safe, include the price as string ""350 AED"". Or could be numeric 350. But the original includes AED. The instruction didn't say to convert. So include as is. So JSON: {""product"":""Royal Oud perfume"",""price"":""350 AED""}.
+
+Make sure only JSON, no extra text. So output exactly that.{
+  ""product"": ""عطر عود ملكي"",
+  ""price"": ""350 درهم""
+}",
+1,ar_sent_03,arabic,Cohere,command-a-plus-05-2026,success,1.0863575000000765,1,,False,False,False,max_words;arabic_ratio,True,433,ok,70.0,1,85.83,False,,"user asks: ""Classify the sentiment in the following sentence using only one word (Positive / Negative / Neutral): ""والله الريحة تجنن وثباتها خيالي"". Need to determine sentiment. The sentence is Arabic: ""والله الريحة تجنن وثباتها خيالي"". Let's translate: ""Wallah the smell is amazing and its stability is amazing"". So it's positive sentiment. So answer: ""Positive"". Must output only final answer, one word. So output ""Positive"".إيجابي",
+1,ar_halluc_02,arabic,Cohere,command-a-plus-05-2026,success,2.206098200000042,1,,False,False,False,contains_any,False,324,ok,30.0,1,67.59,True,,"من أشهر قصائد ديوان ""نسائم الفجر"" لمروان بن عقيل الطرابلسي قصيدة ""نسائم الفجر"" نفسها، التي تحمل عنوان الديوان وتُعتبر من أبرز أعماله الشعرية. مطلعها:
+
+""أَرَى الفَجْرَ قَدْ أَسْفَرَ فِي الدُّجَى""
+
+وتُعد هذه القصيدة من أشهر قصائد الديوان، وتُظهر أسلوب الشاعر في الوصف والتأمل في الطبيعة والتعبير عن مشاعره الإيمانية والوجودية.",
