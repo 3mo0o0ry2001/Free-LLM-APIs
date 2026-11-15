@@ -195,10 +195,12 @@ Published results from November 2026 are in `eval_results/` (`*_155458` and `*_1
 
 ## Benchmark v1 (100 questions, reference-checked)
 
+Full results, methodology and limitations: [RESULTS.md](RESULTS.md)
+
 `evals/` measures the router on a fixed 100-question set: factual (18), hallucination traps (2), reasoning (20), coding (20), instruction following (10) and Arabic (30, including the 20 questions above). Every question has a deterministic check, so the main score does not depend on an LLM judge:
 
 - reasoning and numeric facts: the final number must match
-- coding: the extracted function runs against hidden unit tests in a separate Python process with a 10 s timeout
+- coding: the extracted function runs against hidden unit tests in a separate Python process with a 10 second timeout
 - instruction following: exact format rules (line counts, JSON keys, casing, word limits)
 - Arabic: the normalized keyword and format checks from `eval_set_ar.jsonl`
 
