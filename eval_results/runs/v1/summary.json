@@ -1,0 +1,209 @@
+{
+  "run_id": "v1",
+  "exec_enabled": true,
+  "router": {
+    "questions_scored": 100,
+    "router_accuracy_%": 94.0,
+    "router_accuracy_ci": [
+      89.0,
+      98.0
+    ],
+    "best_single_provider": "OpenRouter",
+    "best_single_accuracy_%": 96.0,
+    "router_minus_best_single_pts": -2.0,
+    "router_minus_best_single_ci": [
+      -7.0,
+      3.0
+    ],
+    "oracle_accuracy_%": 99.0,
+    "router_picked_correct_when_possible_%": 94.9,
+    "best_ties_%": 1.0,
+    "no_usable_answer_%": 0.0
+  },
+  "providers": [
+    {
+      "provider": "OpenRouter",
+      "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+      "calls": 100,
+      "win_rate_%": 5.0,
+      "reference_accuracy_%": 96.0,
+      "reference_accuracy_ci": [
+        92.0,
+        99.0
+      ],
+      "lenient_accuracy_%": 96.0,
+      "right_but_dirty_%": 0.0,
+      "accuracy_when_answered_%": 99.0,
+      "avg_weighted_score": 88.5,
+      "avg_judge_score": 93.9,
+      "latency_median_s": 2.42,
+      "latency_p95_s": 6.36,
+      "error_rate_%": 3.0,
+      "timeout_rate_%": 3.0,
+      "rate_limit_rate_%": 0.0,
+      "other_error_rate_%": 0.0,
+      "truncated_rate_%": 1.0,
+      "leaked_reasoning_%": 0.0,
+      "first_error": "Request timed out after 10 seconds"
+    },
+    {
+      "provider": "Groq",
+      "model": "openai/gpt-oss-20b",
+      "calls": 100,
+      "win_rate_%": 61.0,
+      "reference_accuracy_%": 90.0,
+      "reference_accuracy_ci": [
+        84.0,
+        95.0
+      ],
+      "lenient_accuracy_%": 90.0,
+      "right_but_dirty_%": 0.0,
+      "accuracy_when_answered_%": 92.8,
+      "avg_weighted_score": 91.2,
+      "avg_judge_score": 89.8,
+      "latency_median_s": 0.53,
+      "latency_p95_s": 1.04,
+      "error_rate_%": 3.0,
+      "timeout_rate_%": 0.0,
+      "rate_limit_rate_%": 0.0,
+      "other_error_rate_%": 3.0,
+      "truncated_rate_%": 3.0,
+      "leaked_reasoning_%": 0.0,
+      "first_error": "Error code: 400 - {'error': {'message': 'Tool choice is none, but model called a tool', 'type': 'invalid_request_error', 'code': 'tool_use_failed', 'failed_generation': '{\"name\": \"code\", \"arguments\": def roman_to_int(s: str) -> int:\\n    roman_map = {\\n        \\'I\\': 1, \\'V\\': 5, \\'X\\': 10,\\n        \\'L\\': 50, \\'C\\': 100, \\'D\\': 500,\\n        \\'M\\': 1000\\n    }\\n    total = 0\\n    prev = 0\\n    for ch in reversed(s.upper()):\\n        val = roman_map.get(ch, 0)\\n        if val < prev:\\n            total -= val\\n        else:\\n            total += val\\n            prev = val\\n    return total\\n}'}}"
+    },
+    {
+      "provider": "Cohere",
+      "model": "command-a-plus-05-2026",
+      "calls": 100,
+      "win_rate_%": 34.0,
+      "reference_accuracy_%": 68.0,
+      "reference_accuracy_ci": [
+        59.0,
+        77.0
+      ],
+      "lenient_accuracy_%": 81.0,
+      "right_but_dirty_%": 13.0,
+      "accuracy_when_answered_%": 68.0,
+      "avg_weighted_score": 86.8,
+      "avg_judge_score": 72.8,
+      "latency_median_s": 0.89,
+      "latency_p95_s": 2.17,
+      "error_rate_%": 0.0,
+      "timeout_rate_%": 0.0,
+      "rate_limit_rate_%": 0.0,
+      "other_error_rate_%": 0.0,
+      "truncated_rate_%": 0.0,
+      "leaked_reasoning_%": 24.0,
+      "first_error": null
+    }
+  ],
+  "accuracy_by_category_%": {
+    "arabic": {
+      "Cohere": 46.7,
+      "Groq": 80.0,
+      "OpenRouter": 93.3,
+      "Router pick": 80.0,
+      "n_questions": 30
+    },
+    "coding": {
+      "Cohere": 100.0,
+      "Groq": 85.0,
+      "OpenRouter": 90.0,
+      "Router pick": 100.0,
+      "n_questions": 20
+    },
+    "factual": {
+      "Cohere": 83.3,
+      "Groq": 100.0,
+      "OpenRouter": 100.0,
+      "Router pick": 100.0,
+      "n_questions": 18
+    },
+    "hallucination": {
+      "Cohere": 100.0,
+      "Groq": 50.0,
+      "OpenRouter": 100.0,
+      "Router pick": 100.0,
+      "n_questions": 2
+    },
+    "instruction": {
+      "Cohere": 70.0,
+      "Groq": 100.0,
+      "OpenRouter": 100.0,
+      "Router pick": 100.0,
+      "n_questions": 10
+    },
+    "reasoning": {
+      "Cohere": 50.0,
+      "Groq": 100.0,
+      "OpenRouter": 100.0,
+      "Router pick": 100.0,
+      "n_questions": 20
+    }
+  },
+  "judge_audit": {
+    "judge_calls": 100,
+    "judge_failure_rate_%": 2.0,
+    "questions_audited": 98,
+    "pairs_pass_vs_fail": 69,
+    "judge_ranks_correct_higher_%": 85.5,
+    "judge_ties_%": 1.4,
+    "judge_ranks_wrong_higher_%": 13.0,
+    "pairwise_agreement_ties_half_%": 86.2,
+    "pairwise_agreement_ci": [
+      73.9,
+      96.4
+    ],
+    "provider_bias_all_pass_questions": {
+      "Cohere": {
+        "n": 62,
+        "mean_residual": -5.4,
+        "ci": [
+          -10.2,
+          -1.6
+        ]
+      },
+      "Groq": {
+        "n": 59,
+        "mean_residual": 2.6,
+        "ci": [
+          0.5,
+          4.9
+        ]
+      },
+      "OpenRouter": {
+        "n": 61,
+        "mean_residual": 3.0,
+        "ci": [
+          0.9,
+          5.5
+        ]
+      }
+    },
+    "top_pick_share_all_pass_questions": {
+      "n_questions": 62,
+      "share_%": {
+        "Cohere": 31.5,
+        "Groq": 29.0,
+        "OpenRouter": 39.5
+      }
+    },
+    "position_bias": {
+      "0": {
+        "n": 62,
+        "mean_residual": -0.5
+      },
+      "1": {
+        "n": 62,
+        "mean_residual": -1.6
+      },
+      "2": {
+        "n": 58,
+        "mean_residual": 2.2
+      }
+    },
+    "length_pairs_both_correct": 42,
+    "longer_answer_scored_higher_%": 31.0,
+    "spearman_length_vs_residual_correct_answers": -0.274
+  }
+}

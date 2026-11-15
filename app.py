@@ -1,6 +1,7 @@
 import os
 import json
 import asyncio
+import random
 import time
 import re
 
@@ -168,14 +169,30 @@ async def ask_provider(name, config, prompt):
                 )
 
                 answer = response.output_text
-                finish_reason = "completed"
+
+                # The Responses API reports truncation through
+                # status="incomplete", not finish_reason.
+                incomplete = getattr(
+                    response, "incomplete_details", None
+                )
+
+                if (
+                    getattr(response, "status", None) == "incomplete"
+                    and getattr(incomplete, "reason", None)
+                    == "max_output_tokens"
+                ):
+                    finish_reason = "length"
+                else:
+                    finish_reason = "completed"
 
                 if not answer:
                     raise ValueError(
                         "Groq returned an empty response."
                     )
 
-                status = "success"
+                status = normalize_status(
+                    finish_reason
+                )
 
             # ------------------------------------------------
             # COHERE
@@ -439,14 +456,22 @@ def extract_json(text):
         return None
 
 
-async def evaluate_quality(prompt, results):
+async def evaluate_quality(prompt, results, rng=None):
     """
     Groq acts as an anonymous Quality Judge.
 
     Each usable answer is renamed:
     A, B, C, D...
 
-    The judge does not receive provider names.
+    The judge does not receive provider names. Answers are
+    shuffled before labelling so no provider always sits in
+    position A (position bias). Pass a seeded random.Random
+    as `rng` for reproducible orders.
+
+    Every judged result gets:
+      judge_status   "ok" | "failed" | "no_judge"
+      judge_position 0-based position shown to the judge
+    Returns a metadata dict (status, order, raw output, error).
     """
 
     usable = [
@@ -459,8 +484,23 @@ async def evaluate_quality(prompt, results):
         and result["answer"]
     ]
 
+    meta = {
+        "status": "skipped",
+        "model": None,
+        "order": [],
+        "raw": None,
+        "error": None,
+    }
+
     if not usable:
-        return
+        return meta
+
+    usable = list(usable)
+    (rng or random).shuffle(usable)
+    meta["order"] = [result["provider"] for result in usable]
+
+    for position, result in enumerate(usable):
+        result["judge_position"] = position
 
     groq_config = PROVIDERS.get(
         "Groq"
@@ -471,8 +511,13 @@ async def evaluate_quality(prompt, results):
         # use neutral quality score.
         for result in usable:
             result["quality_score"] = 50.0
+            result["judge_status"] = "no_judge"
 
-        return
+        meta["status"] = "no_judge"
+        return meta
+
+    judge_model = os.getenv("JUDGE_MODEL") or groq_config["model"]
+    meta["model"] = judge_model
 
     labels = {}
 
@@ -529,9 +574,7 @@ Answers:
             groq_config[
                 "client"
             ].responses.create(
-                model=groq_config[
-                    "model"
-                ],
+                model=judge_model,
                 input=judge_prompt,
                 reasoning={
                     "effort": "low"
@@ -540,6 +583,8 @@ Answers:
             ),
             timeout=JUDGE_TIMEOUT,
         )
+
+        meta["raw"] = response.output_text
 
         data = extract_json(
             response.output_text
@@ -560,6 +605,8 @@ Answers:
                 50
             )
 
+            result["judge_status"] = "ok"
+
             try:
                 score = float(
                     raw_score
@@ -570,6 +617,10 @@ Answers:
                 ValueError
             ):
                 score = 50.0
+                result["judge_status"] = "failed"
+
+            if label not in data:
+                result["judge_status"] = "failed"
 
             score = max(
                 0.0,
@@ -583,6 +634,8 @@ Answers:
                 "quality_score"
             ] = score
 
+        meta["status"] = "ok"
+
     except Exception as e:
 
         print(
@@ -590,10 +643,16 @@ Answers:
             f"Quality evaluation failed: {e}"
         )
 
+        meta["status"] = "failed"
+        meta["error"] = str(e)
+
         for result in usable:
             result[
                 "quality_score"
             ] = 50.0
+            result["judge_status"] = "failed"
+
+    return meta
 
 
 # ============================================================

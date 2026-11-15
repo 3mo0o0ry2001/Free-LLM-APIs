@@ -1,0 +1,1192 @@
+﻿run,id,category,provider,model,status,latency_s,attempts,error_kind,passed,passed_lenient,rescued_by_lenient,failed_checks,leaked_reasoning,length_chars,judge_status,judge_score,judge_position,final_score,router_best,error,answer
+1,fact_en_01,factual,Groq,openai/gpt-oss-20b,success,0.9795143999981519,1,,True,True,False,,False,37,ok,100.0,2,98.04,False,,The capital of Australia is Canberra.
+1,fact_en_01,factual,OpenRouter,nvidia/nemotron-3-ultra-550b-a55b:free,success,2.5158394999998563,1,,True,True,False,,False,37,ok,100.0,1,94.97,False,,The capital of Australia is Canberra.
+1,fact_en_01,factual,Cohere,command-a-plus-05-2026,success,0.9696518999990076,1,,True,True,False,,False,37,ok,100.0,0,98.06,True,,The capital of Australia is Canberra.
+1,fact_en_02,factual,Groq,openai/gpt-oss-20b,success,0.506706000000122,1,,True,True,False,,False,2,ok,100.0,1,98.99,True,,Au
+1,fact_en_02,factual,OpenRouter,nvidia/nemotron-3-ultra-550b-a55b:free,success,1.51448629999868,1,,True,True,False,,False,2,ok,100.0,0,96.97,False,,Au
+1,fact_en_02,factual,Cohere,command-a-plus-05-2026,success,0.692904700001236,1,,True,True,False,,False,2,ok,100.0,2,98.61,False,,Au
+1,fact_en_03,factual,Groq,openai/gpt-oss-20b,success,0.38164139999935287,1,,True,True,False,,False,7,ok,100.0,2,99.24,True,,Jupiter
+1,fact_en_03,factual,OpenRouter,nvidia/nemotron-3-ultra-550b-a55b:free,success,1.34694060000038,1,,True,True,False,,False,7,ok,100.0,0,97.31,False,,Jupiter
+1,fact_en_03,factual,Cohere,command-a-plus-05-2026,success,0.3964523999966332,1,,True,True,False,,False,8,ok,100.0,1,99.21,False,,Jupiter.
+1,fact_en_04,factual,Groq,openai/gpt-oss-20b,success,0.5213705999995,1,,True,True,False,,False,11,ok,100.0,1,98.96,False,,Jane Austen
+1,fact_en_04,factual,OpenRouter,nvidia/nemotron-3-ultra-550b-a55b:free,success,1.1967015999980504,1,,True,True,False,,False,11,ok,100.0,0,97.61,False,,Jane Austen
+1,fact_en_04,factual,Cohere,command-a-plus-05-2026,success,0.4818422999996983,1,,True,True,False,,False,11,ok,100.0,2,99.04,True,,Jane Austen
+1,fact_en_05,factual,Groq,openai/gpt-oss-20b,success,0.45425629999954253,1,,True,True,False,,False,3,ok,100.0,1,99.09,False,,100
+1,fact_en_05,factual,OpenRouter,nvidia/nemotron-3-ultra-550b-a55b:free,success,1.0772361000017554,1,,True,True,False,,False,3,ok,100.0,2,97.85,False,,100
+1,fact_en_05,factual,Cohere,command-a-plus-05-2026,success,0.3799665999977151,1,,True,True,False,,False,3,ok,100.0,0,99.24,True,,100
+1,fact_en_06,factual,Groq,openai/gpt-oss-20b,success,0.3442041000016616,1,,True,True,False,,False,3,ok,100.0,1,99.31,True,,206
+1,fact_en_06,factual,OpenRouter,nvidia/nemotron-3-ultra-550b-a55b:free,success,1.378636199999164,1,,True,True,False,,False,3,ok,100.0,0,97.24,False,,206
+1,fact_en_06,factual,Cohere,command-a-plus-05-2026,success,1.175671200002398,1,,False,True,True,max_words,True,513,ok,30.0,2,69.65,False,,"<EOS_TOKEN>The user asks: ""How many bones are in the typical adult human body? Reply with only the final number."" The instruction: ""Answer the user's question directly. Return only the final answer. Do not output planning, reasoning, drafts, analysis, or calculations.""
+
+Thus I need to output the number of bones in a typical adult human body. The typical number is 206. However, there can be variation due to fused bones, but typical adult human has 206 bones.
+
+Thus final answer: ""206"". Ensure no extra text.206"
+1,fact_en_07,factual,Groq,openai/gpt-oss-20b,success,0.48187770000004093,1,,True,True,False,,False,4,ok,100.0,2,99.04,False,,1989
+1,fact_en_07,factual,OpenRouter,nvidia/nemotron-3-ultra-550b-a55b:free,success,1.3795399000009638,1,,True,True,False,,False,4,ok,100.0,1,97.24,False,,1989
+1,fact_en_07,factual,Cohere,command-a-plus-05-2026,success,0.45652650000192807,1,,True,True,False,,False,4,ok,100.0,0,99.09,True,,1989
+1,fact_en_08,factual,Groq,openai/gpt-oss-20b,success,0.42554269999891403,1,,True,True,False,,False,1,ok,100.0,0,99.15,True,,6
+1,fact_en_08,factual,OpenRouter,nvidia/nemotron-3-ultra-550b-a55b:free,success,1.291315399997984,1,,True,True,False,,False,1,ok,100.0,2,97.42,False,,6
+1,fact_en_08,factual,Cohere,command-a-plus-05-2026,success,0.5673143999993044,1,,False,True,True,max_words,True,208,ok,0.0,1,58.87,False,,"<EOS_TOKEN>The user asks: ""What is the atomic number of carbon? Reply with only the final number.""
+
+We need to answer directly with only the final number. The atomic number of carbon is 6.
+
+Thus answer: ""6"".6"
+1,fact_en_09,factual,Groq,openai/gpt-oss-20b,success,0.46806959999958053,1,,True,True,False,,False,4,ok,100.0,2,99.06,True,,Iron
+1,fact_en_09,factual,OpenRouter,nvidia/nemotron-3-ultra-550b-a55b:free,success,0.9741069000010611,1,,True,True,False,,False,4,ok,100.0,0,98.05,False,,Iron
+1,fact_en_09,factual,Cohere,command-a-plus-05-2026,success,0.6144541000030586,1,,True,True,False,,False,4,ok,100.0,1,98.77,False,,Iron
+1,fact_en_10,factual,Groq,openai/gpt-oss-20b,success,0.49037069999758387,1,,True,True,False,,False,22,ok,100.0,0,99.02,False,,Gabriel García Márquez
+1,fact_en_10,factual,OpenRouter,nvidia/nemotron-3-ultra-550b-a55b:free,success,0.7780547000002116,1,,True,True,False,,False,22,ok,100.0,1,98.44,False,,Gabriel García Márquez
+1,fact_en_10,factual,Cohere,command-a-plus-05-2026,success,0.46584400000210735,1,,True,True,False,,False,22,ok,100.0,2,99.07,True,,Gabriel García Márquez
+1,fact_en_11,factual,Groq,openai/gpt-oss-20b,success,0.4953475000002072,1,,True,True,False,,False,3,ok,100.0,2,99.01,True,,Yen
+1,fact_en_11,factual,OpenRouter,nvidia/nemotron-3-ultra-550b-a55b:free,success,0.9429335999993782,1,,True,True,False,,False,3,ok,100.0,0,98.11,False,,yen
+1,fact_en_11,factual,Cohere,command-a-plus-05-2026,success,0.9379731000008178,1,,True,True,False,,False,3,ok,100.0,1,98.12,False,,Yen
+1,fact_en_12,factual,Groq,openai/gpt-oss-20b,success,0.4711282999996911,1,,True,True,False,,False,8,ok,95.0,1,97.06,True,,Einstein
+1,fact_en_12,factual,OpenRouter,nvidia/nemotron-3-ultra-550b-a55b:free,success,3.2334742000020924,1,,True,True,False,,False,15,ok,95.0,2,91.53,False,,Albert Einstein
+1,fact_en_12,factual,Cohere,command-a-plus-05-2026,success,0.46604370000204653,1,,True,True,False,,True,42,ok,90.0,0,95.07,False,,<EOS_TOKEN>Albert Einstein.Albert Einstein
+1,fact_en_13,factual,Groq,openai/gpt-oss-20b,success,0.3756165000013425,1,,True,True,False,,False,7,ok,100.0,1,99.25,True,,Pacific
+1,fact_en_13,factual,OpenRouter,nvidia/nemotron-3-ultra-550b-a55b:free,success,1.2951656000004732,1,,True,True,False,,False,7,ok,100.0,2,97.41,False,,Pacific
+1,fact_en_13,factual,Cohere,command-a-plus-05-2026,success,0.9861247999979241,1,,True,True,False,,True,352,ok,20.0,0,66.03,False,,"<EOS_TOKEN>The user asks: ""What is the largest ocean on Earth? Answer with one word.""
+
+We need to answer with one word: ""Pacific"". That's the correct answer. The instruction: ""Answer the user's question directly. Return only the final answer. Do not output planning, reasoning, drafts, analysis, or calculations.""
+
+Thus we output just ""Pacific"".Pacific"
+1,fact_en_14,factual,Groq,openai/gpt-oss-20b,success,0.43989720000172383,1,,True,True,False,,False,7,ok,100.0,2,99.12,False,,Diamond
+1,fact_en_14,factual,OpenRouter,nvidia/nemotron-3-ultra-550b-a55b:free,success,1.0263496999978088,1,,True,True,False,,False,7,ok,100.0,0,97.95,False,,Diamond
+1,fact_en_14,factual,Cohere,command-a-plus-05-2026,success,0.3563181999998051,1,,True,True,False,,False,8,ok,100.0,1,99.29,True,,Diamond.
+1,fact_en_15,factual,Groq,openai/gpt-oss-20b,success,0.5241721999991569,1,,True,True,False,,False,27,ok,90.0,2,94.95,True,,HyperText Transfer Protocol
+1,fact_en_15,factual,OpenRouter,nvidia/nemotron-3-ultra-550b-a55b:free,success,3.8781032000006235,1,,True,True,False,,False,27,ok,100.0,1,92.24,False,,Hypertext Transfer Protocol
+1,fact_en_15,factual,Cohere,command-a-plus-05-2026,success,1.5975990000006277,1,,True,True,False,,True,519,ok,0.0,0,56.8,False,,"<EOS_TOKEN>The user asks: ""What does the acronym HTTP stand for? Answer with the expansion only."" So we need to output the expansion only, which is ""Hypertext Transfer Protocol"". The instruction says: ""Answer the user's question directly. Return only the final answer. Do not output planning, reasoning, drafts, analysis, or calculations."" So we should just output ""Hypertext Transfer Protocol"". Probably no extra punctuation. Just the expansion. So final answer: Hypertext Transfer Protocol.Hypertext Transfer Protocol"
+1,fact_en_16,factual,Groq,openai/gpt-oss-20b,success,0.6225399000031757,1,,True,True,False,,False,16,ok,100.0,0,98.75,True,,Guido van Rossum
+1,fact_en_16,factual,OpenRouter,nvidia/nemotron-3-ultra-550b-a55b:free,success,0.8955520999988948,1,,True,True,False,,False,16,ok,100.0,1,98.21,False,,Guido van Rossum
+1,fact_en_16,factual,Cohere,command-a-plus-05-2026,success,0.6750666000007186,1,,True,True,False,,True,45,ok,90.0,2,94.65,False,,<EOS_TOKEN>Guido van Rossum.Guido van Rossum.
+1,fact_en_17,factual,Groq,openai/gpt-oss-20b,success,0.47959520000222255,1,,True,True,False,,False,2,ok,100.0,2,99.04,True,,32
+1,fact_en_17,factual,OpenRouter,nvidia/nemotron-3-ultra-550b-a55b:free,success,4.1551121000011335,1,,True,True,False,,False,2,ok,100.0,0,91.69,False,,32
+1,fact_en_17,factual,Cohere,command-a-plus-05-2026,success,1.4049742000024708,1,,False,True,True,max_words,False,604,ok,70.0,1,85.19,False,,"32°F
+
+But the user asked: ""Reply with only the final number."" So I should output just ""32"". However, the instruction says: ""Answer the user's question directly. Return only the final answer. Do not output planning, reasoning, drafts, analysis, or calculations."" The user wants only the final number. So I should output ""32"". But the system says: ""Answer the user's question directly. Return only the final answer."" That could be interpreted as just the number, not the unit. The user explicitly said: ""Reply with only the final number."" So I should output ""32"". No unit, no text. So final answer: ""32"".32"
+1,fact_en_18,factual,Groq,openai/gpt-oss-20b,success,0.4888457000015478,1,,True,True,False,,False,4,ok,100.0,2,99.02,False,,1969
+1,fact_en_18,factual,OpenRouter,nvidia/nemotron-3-ultra-550b-a55b:free,success,1.8241705000000366,1,,True,True,False,,False,4,ok,100.0,1,96.35,False,,1969
+1,fact_en_18,factual,Cohere,command-a-plus-05-2026,success,0.48742870000205585,1,,True,True,False,,False,4,ok,100.0,0,99.03,True,,1969
+1,fact_en_19,hallucination,Groq,openai/gpt-oss-20b,truncated,1.194208000000799,1,,False,False,False,contains_any,False,2871,ok,40.0,0,61.11,False,,"**The Glass Orchard of Port Vellum** (1897) – Henrietta Crane  
+*A lush, atmospheric Victorian tale of love, duty, and the strange magic that lingers in the mist‑shrouded harbor town of Port Vellum.*
+
+---
+
+### Setting  
+Port Vellum, a quiet seaside town on the western coast of England, is famed for its peculiar “glass orchard”—a grove of crystal‑like trees that glimmer with a faint, otherworldly light. The orchard is a local legend: it was planted centuries ago by the mysterious Mariner’s Daughter, and it is said that anyone who walks beneath its branches will see glimpses of their future.
+
+### Main Characters  
+
+| Character | Description |
+|-----------|-------------|
+| **Isabella “Bella” Marlowe** | A bright, curious 17‑year‑old orphan raised by her stern Aunt Lydia. Bella longs for adventure and a place of her own. |
+| **Captain Alden Rook** | The charismatic, enigmatic sea‑captain of the *Sea‑Rose*. He is the town’s most sought‑after bachelor and a secret keeper of the orchard’s history. |
+| **Aunt Lydia Marlowe** | Bella’s guardian, a widowed widow who runs the town’s apothecary. She is practical, protective, and secretly harbors doubts about the orchard’s magic. |
+| **Elias Wren** | A wandering scholar and the only other person in Port Vellum who knows the orchard’s true story. He becomes an unlikely ally to Bella. |
+| **Lady Eleanor Vellum** | The current heir to the Vellum estate and the rightful custodian of the orchard. She is both regal and fearful of the orchard’s power. |
+
+### Plot Summary
+
+1. **The Orchard’s Secret**  
+   The novel opens with the town’s annual “Glass Gala,” a celebration where townsfolk gather to admire the orchard’s luminous branches. Bella is drawn to the orchard, sensing that it might be the key to her future. She meets Captain Rook, who warns her of the orchard’s “dangerous truths.”  
+
+2. **A Mysterious Invitation**  
+   Aunt Lydia receives a sealed letter from Lady Eleanor, inviting her to a private meeting at the Vellum estate. The letter hints that the orchard is in peril, as a new, greedy industrialist is planning to harvest the orchard’s crystals for profit. Bella, eager to help, decides to accompany her aunt.  
+
+3. **The Orchard’s History Unveiled**  
+   In the Vellum estate’s library, Bella meets Elias Wren, who reveals that the orchard was planted by a Mariner’s Daughter who died protecting the town’s secrets. He tells Bella that each crystal in the orchard stores a fragment of a person’s destiny, and the orchard can only be protected if someone willing to sacrifice for its safety steps forward.  
+
+4. **Conflict and Compromise**  
+   Captain Rook, who has secretly loved Bella, proposes a plan: he will lead a small group into the orchard at night to seal a hidden chamber with a special alloy that will render the crystals inert to industrial extraction. Aunt Lydia and Lady Eleanor"
+1,fact_en_19,hallucination,OpenRouter,nvidia/nemotron-3-ultra-550b-a55b:free,success,4.048938199997792,1,,True,True,False,,False,263,ok,80.0,1,83.9,False,,"There is no record of an 1897 novel titled *The Glass Orchard of Port Vellum* by Henrietta Crane. Neither the title nor the author appears in literary histories, library catalogs, or bibliographic databases for that period. It may be a fictional or invented work."
+1,fact_en_19,hallucination,Cohere,command-a-plus-05-2026,success,1.2340119000000414,1,,True,True,False,,False,297,ok,80.0,2,89.53,True,,"I’m sorry, but I don’t have information about a novel titled “The Glass Orchard of Port Vellum” by Henrietta Crane from 1897. This work may not be widely documented or may not exist in commonly referenced literary sources. If you have more details or context about the novel, I’d be happy to help."
+1,fact_en_20,hallucination,Groq,openai/gpt-oss-20b,truncated,1.1840064999996684,1,,True,True,False,,False,3183,ok,0.0,2,45.13,False,,"**Albert Einstein’s 1962 BBC Television Interview – What He Said**
+
+On 1 October 1962, the BBC’s *Tonight* programme broadcast a rare and highly‑anticipated television interview with the world‑famous physicist Albert Einstein. The interview, recorded in the BBC’s studios in London, was one of the only times Einstein spoke on camera in the last decade of his life (he died in April 1955, so the “1962” interview was actually a recording of a 1949 BBC radio interview that had been later transferred to video). Below is a concise summary of Einstein’s key remarks during that broadcast, organized by theme.
+
+---
+
+### 1. **The Nature of Science and Knowledge**
+- **Science as a Human Endeavour**  
+  Einstein emphasized that science is a collective human effort: “Science is a social activity. It is a means of communication among men.” He stressed that the most beautiful aspects of science lie in its *simplicity* and *elegance*, not in its technical details.
+
+- **The Limits of Scientific Knowledge**  
+  He famously remarked that “We do not know what we do not yet know.” He cautioned against over‑confidence in scientific predictions, noting that future discoveries could overturn current theories.
+
+---
+
+### 2. **Relativity and Its Philosophical Implications**
+- **The Essence of Relativity**  
+  Einstein explained that the theory of relativity is not just a set of equations but a *conceptual shift* in how we understand time, space, and gravity. He used everyday analogies (like the elevator in free fall) to illustrate that gravity is the curvature of spacetime.
+
+- **Philosophical Consequences**  
+  He warned that relativity challenges the *absolute* notions of space and time that had dominated physics since Newton. He noted that “the old concepts of ‘space’ and ‘time’ have become merely useful concepts for a particular class of problems.”
+
+---
+
+### 3. **The Role of Mathematics**
+- **Mathematics as a Language**  
+  Einstein said, “Mathematics is the language of the universe.” He argued that the beauty of the universe is reflected in the *symmetry* of its mathematical laws.
+
+- **Limits of Mathematics**  
+  He cautioned that mathematics cannot alone determine the *meaning* of the laws; philosophical interpretation is necessary.
+
+---
+
+### 4. **The Social Responsibility of Scientists**
+- **Peace and Nuclear Weapons**  
+  Einstein voiced a strong anti‑war stance. He remarked that the development of nuclear weapons was a profound moral problem, calling for global cooperation to prevent their misuse.
+
+- **Science and Politics**  
+  He suggested that scientists must speak out on societal issues, stating, “We cannot remain silent about the political implications of our work.”
+
+---
+
+### 5. **Personal Reflections**
+- **His Early Years**  
+  Einstein briefly recounted his upbringing in Ulm and Munich, his struggles with school, and his early fascination with physics.
+
+- **His View on Fame**  
+  He expressed discomfort with being a celebrity, insisting that “the most important thing is not to become famous for a single discovery but for the breadth of one’s contribution.”
+
+- **Hobbies and Interests**  
+  He mentioned his love for sailing, his fondness for"
+1,fact_en_20,hallucination,OpenRouter,nvidia/nemotron-3-ultra-550b-a55b:free,success,2.617418899997574,1,,True,True,False,,False,284,ok,20.0,1,62.77,False,,"Albert Einstein died in 1955, so he could not have given a television interview to the BBC in 1962. You may be thinking of a different interview or a different year (such as his 1950s interviews or the 1962 BBC documentary *The World of Albert Einstein*, which aired after his death)."
+1,fact_en_20,hallucination,Cohere,command-a-plus-05-2026,success,0.9726298000023235,1,,True,True,False,,False,251,ok,20.0,0,66.05,True,,"Albert Einstein did not give a television interview with the BBC in 1962. He passed away in 1955. There may be some confusion with another event or person. If you have more specific details or are thinking of a different interview, please let me know!"
+1,reason_01,reasoning,Groq,openai/gpt-oss-20b,success,0.5054664999988745,1,,True,True,False,,False,2,ok,100.0,2,98.99,True,,72
+1,reason_01,reasoning,OpenRouter,nvidia/nemotron-3-ultra-550b-a55b:free,success,2.880214500000875,1,,True,True,False,,False,2,ok,100.0,0,94.24,False,,72
+1,reason_01,reasoning,Cohere,command-a-plus-05-2026,success,1.0834754000024986,1,,False,True,True,final_number,True,313,ok,0.0,1,57.83,False,,"The user asks: ""A train travels 180 km in 2.5 hours. What is its average speed in km/h? Reply with only the final number.""
+
+We need to compute average speed = distance / time = 180 km / 2.5 hours = 72 km/h.
+
+We must output only the final number, presumably ""72"". No units, no extra text.
+
+Thus final answer: 72.72"
+1,reason_02,reasoning,Groq,openai/gpt-oss-20b,success,0.8801283000029798,1,,True,True,False,,False,3,ok,100.0,1,98.24,False,,391
+1,reason_02,reasoning,OpenRouter,nvidia/nemotron-3-ultra-550b-a55b:free,success,3.7435765999980504,1,,True,True,False,,False,3,ok,100.0,0,92.51,False,,391
+1,reason_02,reasoning,Cohere,command-a-plus-05-2026,success,0.6702188999988721,1,,True,True,False,,False,3,ok,100.0,2,98.66,True,,391
+1,reason_03,reasoning,Groq,openai/gpt-oss-20b,success,0.4672841999999946,1,,True,True,False,,False,1,ok,100.0,0,99.07,True,,4
+1,reason_03,reasoning,OpenRouter,nvidia/nemotron-3-ultra-550b-a55b:free,success,4.251933700001246,1,,True,True,False,,False,1,ok,100.0,1,91.5,False,,4
+1,reason_03,reasoning,Cohere,command-a-plus-05-2026,success,0.6408496999974886,1,,True,True,False,,False,1,ok,100.0,2,98.72,False,,4
+1,reason_04,reasoning,Groq,openai/gpt-oss-20b,success,0.9904392999997071,1,,True,True,False,,False,4,ok,100.0,1,98.02,False,,5050
+1,reason_04,reasoning,OpenRouter,nvidia/nemotron-3-ultra-550b-a55b:free,success,1.2899025000006077,1,,True,True,False,,False,4,ok,100.0,0,97.42,False,,5050
+1,reason_04,reasoning,Cohere,command-a-plus-05-2026,success,0.5745305999989796,1,,True,True,False,,False,4,ok,100.0,2,98.85,True,,5050
+1,reason_05,reasoning,Groq,openai/gpt-oss-20b,success,0.568794999999227,1,,True,True,False,,False,2,ok,100.0,0,98.86,True,,50
+1,reason_05,reasoning,OpenRouter,nvidia/nemotron-3-ultra-550b-a55b:free,success,3.717697500000213,1,,True,True,False,,False,2,ok,100.0,2,92.56,False,,50
+1,reason_05,reasoning,Cohere,command-a-plus-05-2026,success,1.0755175999984203,1,,False,True,True,final_number,False,267,ok,0.0,1,57.85,False,,"50
+
+Wait, let me double-check. If a shirt costs $40 after a 20% discount, that means the discounted price is 80% of the original price (since 100% - 20% = 80%). So if $40 is 80% of the original price, then the original price is $40 / 0.8 = $50. So the answer is 50.50"
+1,reason_06,reasoning,Groq,openai/gpt-oss-20b,success,0.43008629999894765,1,,True,True,False,,False,2,ok,100.0,1,99.14,True,,20
+1,reason_06,reasoning,OpenRouter,nvidia/nemotron-3-ultra-550b-a55b:free,success,2.023420100002113,1,,True,True,False,,False,2,ok,100.0,0,95.95,False,,20
+1,reason_06,reasoning,Cohere,command-a-plus-05-2026,success,1.1166572000001906,1,,False,True,True,final_number,False,250,ok,20.0,2,65.77,False,,"Let Bob's current age be B. Then Alice's current age is 2B.
+
+In 5 years, Alice will be 2B + 5, and Bob will be B + 5. Their sum will be (2B + 5) + (B + 5) = 3B + 10 = 40.
+
+Solve: 3B = 30 => B = 10.
+
+Thus Alice's current age is 2B = 20.
+
+Answer: 20.20"
+1,reason_07,reasoning,Groq,openai/gpt-oss-20b,success,0.4922943999990821,1,,True,True,False,,False,3,ok,100.0,0,99.02,True,,210
+1,reason_07,reasoning,OpenRouter,nvidia/nemotron-3-ultra-550b-a55b:free,success,1.4035759999969741,1,,True,True,False,,False,3,ok,100.0,2,97.19,False,,210
+1,reason_07,reasoning,Cohere,command-a-plus-05-2026,success,0.8709345999996003,1,,True,True,False,,True,216,ok,30.0,1,70.26,False,,"User asks: ""How many minutes are there in 3.5 hours? Reply with only the final number.""
+
+We need to compute 3.5 hours * 60 minutes per hour = 210 minutes. So final answer: 210. Should output only the final number.210"
+1,reason_08,reasoning,Groq,openai/gpt-oss-20b,success,0.678813499998796,1,,True,True,False,,False,1,ok,100.0,2,98.64,False,,5
+1,reason_08,reasoning,OpenRouter,nvidia/nemotron-3-ultra-550b-a55b:free,success,1.9329308999986097,1,,True,True,False,,False,1,ok,100.0,0,96.13,False,,5
+1,reason_08,reasoning,Cohere,command-a-plus-05-2026,success,0.3651376000016171,1,,True,True,False,,False,1,ok,100.0,1,99.27,True,,5
+1,reason_09,reasoning,Groq,openai/gpt-oss-20b,success,0.4918687999997928,1,,True,True,False,,False,4,ok,100.0,2,99.02,True,,1024
+1,reason_09,reasoning,OpenRouter,nvidia/nemotron-3-ultra-550b-a55b:free,success,1.7230241999968712,1,,True,True,False,,False,4,ok,100.0,1,96.55,False,,1024
+1,reason_09,reasoning,Cohere,command-a-plus-05-2026,success,1.010132600000361,1,,True,True,False,,True,171,ok,30.0,0,69.98,False,,"User asks: ""What is 2 to the power of 10? Reply with only the final number."" So answer: 2^10 = 1024. Must reply only the final number, no extra text. So output ""1024"".1024"
+1,reason_10,reasoning,Groq,openai/gpt-oss-20b,success,0.9911821999994572,1,,True,True,False,,False,2,ok,100.0,0,98.02,True,,54
+1,reason_10,reasoning,OpenRouter,nvidia/nemotron-3-ultra-550b-a55b:free,success,1.5992407000012463,1,,True,True,False,,False,2,ok,100.0,1,96.8,False,,54
+1,reason_10,reasoning,Cohere,command-a-plus-05-2026,success,0.9827874000002339,1,,False,True,True,final_number,False,241,ok,0.0,2,58.03,False,,"The rectangle has a perimeter of 30 cm and a length of 9 cm.
+
+Perimeter = 2 * (length + width)
+30 = 2 * (9 + width)
+30 = 18 + 2 * width
+2 * width = 30 - 18 = 12
+width = 6 cm
+
+Area = length * width = 9 * 6 = 54 square cm.
+
+The answer is 54.54"
+1,reason_11,reasoning,Groq,openai/gpt-oss-20b,success,0.5622410000032687,1,,True,True,False,,False,2,ok,100.0,2,98.88,True,,30
+1,reason_11,reasoning,OpenRouter,nvidia/nemotron-3-ultra-550b-a55b:free,success,4.5552424999987124,1,,True,True,False,,False,2,ok,100.0,0,90.89,False,,30
+1,reason_11,reasoning,Cohere,command-a-plus-05-2026,success,0.6474232000000484,1,,False,True,True,final_number,False,193,ok,50.0,1,78.71,False,,"The word ""LEVEL"" has 5 letters with L appearing twice and E appearing twice, and V appearing once. The number of distinct arrangements is given by 5!/(2!2!) = 120/4 = 30. So the answer is 30.30"
+1,reason_12,reasoning,Groq,openai/gpt-oss-20b,success,0.4907252000011795,1,,True,True,False,,False,1,ok,100.0,2,99.02,True,,8
+1,reason_12,reasoning,OpenRouter,nvidia/nemotron-3-ultra-550b-a55b:free,success,4.060069399998611,1,,True,True,False,,False,1,ok,100.0,1,91.88,False,,8
+1,reason_12,reasoning,Cohere,command-a-plus-05-2026,success,0.5308904000012262,1,,True,True,False,,False,1,ok,100.0,0,98.94,False,,8
+1,reason_13,reasoning,Groq,openai/gpt-oss-20b,success,0.5781261000011,1,,True,True,False,,False,2,ok,90.0,2,94.84,False,,25
+1,reason_13,reasoning,OpenRouter,nvidia/nemotron-3-ultra-550b-a55b:free,success,6.5125888000002305,1,,True,True,False,,False,2,ok,90.0,1,82.97,False,,25
+1,reason_13,reasoning,Cohere,command-a-plus-05-2026,success,0.8786609999988286,1,,True,True,False,,False,3,ok,95.0,0,96.24,True,,25%
+1,reason_14,reasoning,Groq,openai/gpt-oss-20b,success,0.47822029999952065,1,,True,True,False,,False,2,ok,100.0,2,99.04,True,,36
+1,reason_14,reasoning,OpenRouter,nvidia/nemotron-3-ultra-550b-a55b:free,success,1.3959761999976763,1,,True,True,False,,False,2,ok,100.0,0,97.21,False,,36
+1,reason_14,reasoning,Cohere,command-a-plus-05-2026,success,0.5270352000006824,1,,True,True,False,,False,2,ok,100.0,1,98.95,False,,36
+1,reason_15,reasoning,Groq,openai/gpt-oss-20b,success,0.5382276999989699,1,,True,True,False,,False,1,ok,100.0,0,98.92,True,,5
+1,reason_15,reasoning,OpenRouter,nvidia/nemotron-3-ultra-550b-a55b:free,success,2.560704999999871,1,,True,True,False,,False,1,ok,100.0,2,94.88,False,,5
+1,reason_15,reasoning,Cohere,command-a-plus-05-2026,success,2.106462300002022,1,,False,True,True,final_number,False,923,ok,50.0,1,75.79,False,,"This problem is a classic rate problem. Let's break it down:
+
+Given: 5 machines make 5 widgets in 5 minutes.
+
+This means:
+- Each machine makes 1 widget in 5 minutes
+- Or equivalently, each machine has a rate of 1/5 widgets per minute
+- Or each machine can make 1 widget in 5 minutes
+
+Now we want to find: How many minutes do 100 machines need to make 100 widgets?
+
+If each machine makes 1 widget in 5 minutes, then:
+- 100 machines can make 100 widgets in the same 5 minutes (since each machine is independently making 1 widget)
+
+So the answer is 5 minutes.
+
+But let me double-check this logic:
+- Rate of 5 machines = 5 widgets / 5 minutes = 1 widget per minute
+- Rate of 1 machine = 1/5 widgets per minute
+- Rate of 100 machines = 100 × (1/5) = 20 widgets per minute
+- To make 100 widgets at 20 widgets per minute = 100 ÷ 20 = 5 minutes
+
+Both approaches give the same answer: 5 minutes.
+
+Therefore, the final answer is:
+
+55"
+1,reason_16,reasoning,Groq,openai/gpt-oss-20b,success,0.5402955999998085,1,,True,True,False,,False,2,ok,100.0,2,98.92,True,,42
+1,reason_16,reasoning,OpenRouter,nvidia/nemotron-3-ultra-550b-a55b:free,success,4.661274400001275,1,,True,True,False,,False,2,ok,100.0,1,90.68,False,,42
+1,reason_16,reasoning,Cohere,command-a-plus-05-2026,success,1.5281886999982817,1,,False,True,True,final_number,False,454,ok,30.0,0,68.94,False,,"The sequence given is 2, 6, 12, 20, 30. Let's examine the differences between consecutive terms:
+
+- 6 - 2 = 4
+- 12 - 6 = 6
+- 20 - 12 = 8
+- 30 - 20 = 10
+
+The differences are 4, 6, 8, 10, which increase by 2 each time. So the next difference should be 12. Adding that to 30 gives 42.
+
+Alternatively, these numbers can be expressed as n(n+1) for n starting at 1: 1*2=2, 2*3=6, 3*4=12, 4*5=20, 5*6=30. The next would be 6*7=42.
+
+Thus the next number is 42.42"
+1,reason_17,reasoning,Groq,openai/gpt-oss-20b,success,0.3885143000006792,1,,True,True,False,,False,2,ok,100.0,2,99.22,True,,10
+1,reason_17,reasoning,OpenRouter,nvidia/nemotron-3-ultra-550b-a55b:free,success,2.8694074000013643,1,,True,True,False,,False,2,ok,100.0,1,94.26,False,,10
+1,reason_17,reasoning,Cohere,command-a-plus-05-2026,success,0.7525964999986172,1,,False,True,True,final_number,False,122,ok,70.0,0,86.49,False,,"The prime numbers less than 30 are: 2, 3, 5, 7, 11, 13, 17, 19, 23, and 29. That's 10 primes. So the final number is 10.10"
+1,reason_18,reasoning,Groq,openai/gpt-oss-20b,success,0.45861819999845466,1,,True,True,False,,False,2,ok,100.0,0,99.08,True,,18
+1,reason_18,reasoning,OpenRouter,nvidia/nemotron-3-ultra-550b-a55b:free,success,2.0364626000009594,1,,True,True,False,,False,2,ok,100.0,2,95.93,False,,18
+1,reason_18,reasoning,Cohere,command-a-plus-05-2026,success,0.5835908000008203,1,,False,False,False,final_number,False,4,ok,0.0,1,58.83,False,,18.5
+1,reason_19,reasoning,Groq,openai/gpt-oss-20b,success,0.5784734000008029,1,,True,True,False,,False,2,ok,100.0,1,98.84,True,,21
+1,reason_19,reasoning,OpenRouter,nvidia/nemotron-3-ultra-550b-a55b:free,success,3.8932865999995556,1,,True,True,False,,False,2,ok,100.0,0,92.21,False,,21
+1,reason_19,reasoning,Cohere,command-a-plus-05-2026,success,0.6350158999994164,1,,True,True,False,,False,2,ok,100.0,2,98.73,False,,21
+1,reason_20,reasoning,Groq,openai/gpt-oss-20b,success,0.4559493000015209,1,,True,True,False,,False,6,ok,100.0,2,99.09,True,,Friday
+1,reason_20,reasoning,OpenRouter,nvidia/nemotron-3-ultra-550b-a55b:free,success,2.7610788000019966,1,,True,True,False,,False,6,ok,100.0,0,94.48,False,,Friday
+1,reason_20,reasoning,Cohere,command-a-plus-05-2026,success,1.3252500999988115,1,,False,True,True,not_contains;max_words,False,480,ok,95.0,1,95.35,False,,"To determine the day of the week 100 days from Wednesday, we need to find the remainder when 100 is divided by 7 (since there are 7 days in a week). 
+
+100 ÷ 7 = 14 remainder 2.
+
+So, 100 days is equivalent to 14 weeks and 2 days. After 14 weeks, the day of the week will be the same as the starting day (Wednesday). Then, we add 2 days: Thursday (1 day after Wednesday) and Friday (2 days after Wednesday).
+
+Therefore, 100 days from Wednesday will be Friday.
+
+Answer: Friday.Friday"
+1,code_01,coding,Groq,openai/gpt-oss-20b,success,0.47735580000153277,1,,True,True,False,,False,148,ok,100.0,1,99.05,True,,"```python
+import re
+
+def is_palindrome(s: str) -> bool:
+    cleaned = re.sub(r'[^A-Za-z0-9]', '', s).lower()
+    return cleaned == cleaned[::-1]
+```"
+1,code_01,coding,OpenRouter,nvidia/nemotron-3-ultra-550b-a55b:free,success,6.103132899999764,1,,True,True,False,,False,112,ok,100.0,0,87.79,False,,"def is_palindrome(s):
+    filtered = [c.lower() for c in s if c.isalnum()]
+    return filtered == filtered[::-1]"
+1,code_01,coding,Cohere,command-a-plus-05-2026,success,1.2914815000003728,1,,True,True,False,,False,269,ok,100.0,2,97.42,False,,"```python
+def is_palindrome(s: str) -> bool:
+    # Filter alphanumeric characters and convert to lower case
+    filtered = [c.lower() for c in s if c.isalnum()]
+    # Check if filtered list reads the same forwards and backwards
+    return filtered == filtered[::-1]
+```"
+1,code_02,coding,Groq,openai/gpt-oss-20b,success,0.5657318999983545,1,,True,True,False,,False,322,ok,100.0,2,98.87,True,,"```python
+def fizzbuzz(n):
+    result = []
+    for i in range(1, n + 1):
+        if i % 15 == 0:
+            result.append(""FizzBuzz"")
+        elif i % 3 == 0:
+            result.append(""Fizz"")
+        elif i % 5 == 0:
+            result.append(""Buzz"")
+        else:
+            result.append(str(i))
+    return result
+```"
+1,code_02,coding,OpenRouter,nvidia/nemotron-3-ultra-550b-a55b:free,success,3.753024400000868,1,,True,True,False,,False,308,ok,100.0,1,92.49,False,,"def fizzbuzz(n):
+    result = []
+    for i in range(1, n + 1):
+        if i % 15 == 0:
+            result.append('FizzBuzz')
+        elif i % 3 == 0:
+            result.append('Fizz')
+        elif i % 5 == 0:
+            result.append('Buzz')
+        else:
+            result.append(str(i))
+    return result"
+1,code_02,coding,Cohere,command-a-plus-05-2026,success,1.1898858999993536,1,,True,True,False,,False,336,ok,100.0,0,97.62,False,,"```python
+def fizzbuzz(n):
+    result = []
+    for i in range(1, n + 1):
+        if i % 3 == 0 and i % 5 == 0:
+            result.append(""FizzBuzz"")
+        elif i % 3 == 0:
+            result.append(""Fizz"")
+        elif i % 5 == 0:
+            result.append(""Buzz"")
+        else:
+            result.append(str(i))
+    return result
+```"
+1,code_03,coding,Groq,openai/gpt-oss-20b,success,0.5296506000013324,1,,True,True,False,,False,208,ok,100.0,1,98.94,True,,"```python
+def flatten(lst):
+    result = []
+    for item in lst:
+        if isinstance(item, list):
+            result.extend(flatten(item))
+        else:
+            result.append(item)
+    return result
+```"
+1,code_03,coding,OpenRouter,nvidia/nemotron-3-ultra-550b-a55b:free,success,9.88988160000008,1,,True,True,False,,False,200,ok,100.0,2,80.22,False,,"```python
+def flatten(lst):
+    flat = []
+    for item in lst:
+        if isinstance(item, list):
+            flat.extend(flatten(item))
+        else:
+            flat.append(item)
+    return flat
+```"
+1,code_03,coding,Cohere,command-a-plus-05-2026,success,0.7734728000032192,1,,True,True,False,,False,208,ok,100.0,0,98.45,False,,"```python
+def flatten(lst):
+    result = []
+    for item in lst:
+        if isinstance(item, list):
+            result.extend(flatten(item))
+        else:
+            result.append(item)
+    return result
+```"
+1,code_04,coding,Groq,openai/gpt-oss-20b,success,0.5667874999999185,1,,True,True,False,,False,217,ok,100.0,1,98.87,True,,"```python
+def two_sum(nums, target):
+    seen = {}
+    for i, num in enumerate(nums):
+        complement = target - num
+        if complement in seen:
+            return (seen[complement], i)
+        seen[num] = i
+```"
+1,code_04,coding,OpenRouter,nvidia/nemotron-3-ultra-550b-a55b:free,success,4.14925619999849,1,,True,True,False,,False,249,ok,100.0,0,91.7,False,,"```python
+def two_sum(nums, target):
+    num_to_index = {}
+    for i, num in enumerate(nums):
+        complement = target - num
+        if complement in num_to_index:
+            return (num_to_index[complement], i)
+        num_to_index[num] = i
+```"
+1,code_04,coding,Cohere,command-a-plus-05-2026,success,0.9723646000020381,1,,True,True,False,,False,217,ok,100.0,2,98.06,False,,"```python
+def two_sum(nums, target):
+    seen = {}
+    for i, num in enumerate(nums):
+        complement = target - num
+        if complement in seen:
+            return (seen[complement], i)
+        seen[num] = i
+```"
+1,code_05,coding,Groq,openai/gpt-oss-20b,failed,0.48293630000262056,1,other_error,False,False,False,no_answer,False,0,,,,0.0,False,"Error code: 400 - {'error': {'message': 'Tool choice is none, but model called a tool', 'type': 'invalid_request_error', 'code': 'tool_use_failed', 'failed_generation': '{""name"": ""code"", ""arguments"": def roman_to_int(s: str) -> int:\n    roman_map = {\n        \'I\': 1, \'V\': 5, \'X\': 10,\n        \'L\': 50, \'C\': 100, \'D\': 500,\n        \'M\': 1000\n    }\n    total = 0\n    prev = 0\n    for ch in reversed(s.upper()):\n        val = roman_map.get(ch, 0)\n        if val < prev:\n            total -= val\n        else:\n            total += val\n            prev = val\n    return total\n}'}}",
+1,code_05,coding,OpenRouter,nvidia/nemotron-3-ultra-550b-a55b:free,success,2.5161864000001515,1,,True,True,False,,False,313,ok,95.0,0,92.97,False,,"```python
+def roman_to_int(s):
+    roman = {'I': 1, 'V': 5, 'X': 10, 'L': 50, 'C': 100, 'D': 500, 'M': 1000}
+    total = 0
+    prev = 0
+    for ch in reversed(s):
+        val = roman[ch]
+        if val < prev:
+            total -= val
+        else:
+            total += val
+        prev = val
+    return total
+```"
+1,code_05,coding,Cohere,command-a-plus-05-2026,success,1.7984849999993457,1,,True,True,False,,False,353,ok,95.0,1,94.4,True,,"```python
+def roman_to_int(s):
+    roman_map = {'I': 1, 'V': 5, 'X': 10, 'L': 50, 'C': 100, 'D': 500, 'M': 1000}
+    total = 0
+    prev_value = 0
+    for char in reversed(s):
+        value = roman_map[char]
+        if value < prev_value:
+            total -= value
+        else:
+            total += value
+        prev_value = value
+    return total
+```"
+1,code_06,coding,Groq,openai/gpt-oss-20b,success,0.583259300001373,1,,True,True,False,,False,534,ok,90.0,2,94.83,True,,"```python
+def int_to_roman(n: int) -> str:
+    if not (1 <= n <= 3999):
+        raise ValueError(""Input must be between 1 and 3999 inclusive."")
+    values = [
+        1000, 900, 500, 400,
+        100, 90, 50, 40,
+        10, 9, 5, 4, 1
+    ]
+    symbols = [
+        ""M"", ""CM"", ""D"", ""CD"",
+        ""C"", ""XC"", ""L"", ""XL"",
+        ""X"", ""IX"", ""V"", ""IV"", ""I""
+    ]
+    result = []
+    for value, symbol in zip(values, symbols):
+        while n >= value:
+            n -= value
+            result.append(symbol)
+    return """".join(result)
+```"
+1,code_06,coding,OpenRouter,nvidia/nemotron-3-ultra-550b-a55b:free,success,5.880687799999578,1,,True,True,False,,False,521,ok,95.0,1,86.24,False,,"def int_to_roman(n):
+    if not 1 <= n <= 3999:
+        raise ValueError(""Input must be between 1 and 3999"")
+    
+    roman_numerals = [
+        (1000, 'M'), (900, 'CM'), (500, 'D'), (400, 'CD'),
+        (100, 'C'), (90, 'XC'), (50, 'L'), (40, 'XL'),
+        (10, 'X'), (9, 'IX'), (5, 'V'), (4, 'IV'), (1, 'I')
+    ]
+    
+    result = []
+    for value, symbol in roman_numerals:
+        count, n = divmod(n, value)
+        result.append(symbol * count)
+        if n == 0:
+            break
+    
+    return ''.join(result)"
+1,code_06,coding,Cohere,command-a-plus-05-2026,success,1.4771010000004026,1,,True,True,False,,False,603,ok,90.0,0,93.05,False,,"```python
+def int_to_roman(n):
+    # Define the mapping of integer values to Roman numeral symbols
+    val_to_sym = [
+        (1000, 'M'),
+        (900, 'CM'),
+        (500, 'D'),
+        (400, 'CD'),
+        (100, 'C'),
+        (90, 'XC'),
+        (50, 'L'),
+        (40, 'XL'),
+        (10, 'X'),
+        (9, 'IX'),
+        (5, 'V'),
+        (4, 'IV'),
+        (1, 'I')
+    ]
+    
+    roman = ''
+    for value, symbol in val_to_sym:
+        # Repeat the symbol while the remaining number is >= the value
+        while n >= value:
+            roman += symbol
+            n -= value
+    return roman
+```"
+1,code_07,coding,Groq,openai/gpt-oss-20b,success,0.5599631000004592,1,,True,True,False,,False,314,ok,100.0,2,98.88,True,,"```python
+def is_valid_brackets(s):
+    stack = []
+    mapping = {')': '(', ']': '[', '}': '{'}
+    for ch in s:
+        if ch in mapping.values():
+            stack.append(ch)
+        elif ch in mapping:
+            if not stack or stack.pop() != mapping[ch]:
+                return False
+    return not stack
+```"
+1,code_07,coding,OpenRouter,nvidia/nemotron-3-ultra-550b-a55b:free,success,7.735047300000588,1,,True,True,False,,False,346,ok,100.0,1,84.53,False,,"```python
+def is_valid_brackets(s):
+    stack = []
+    mapping = {')': '(', ']': '[', '}': '{'}
+    for char in s:
+        if char in mapping.values():
+            stack.append(char)
+        elif char in mapping:
+            if not stack or stack[-1] != mapping[char]:
+                return False
+            stack.pop()
+    return not stack
+```"
+1,code_07,coding,Cohere,command-a-plus-05-2026,success,0.9762501000004704,1,,True,True,False,,False,324,ok,100.0,0,98.05,False,,"```python
+def is_valid_brackets(s):
+    stack = []
+    mapping = {')': '(', ']': '[', '}': '{'}
+    for char in s:
+        if char in mapping.values():
+            stack.append(char)
+        elif char in mapping:
+            if not stack or stack.pop() != mapping[char]:
+                return False
+    return not stack
+```"
+1,code_08,coding,Groq,openai/gpt-oss-20b,failed,0.6732969999975467,1,other_error,False,False,False,no_answer,False,0,,,,0.0,False,"Error code: 400 - {'error': {'message': 'Tool choice is none, but model called a tool', 'type': 'invalid_request_error', 'code': 'tool_use_failed', 'failed_generation': '{""name"": ""code"", ""arguments"": def merge_intervals(intervals):\n    """"""\n    Merge overlapping or touching intervals.\n\n    Parameters\n    ----------\n    intervals : list[list[int]]\n        List of [start, end] pairs.\n\n    Returns\n    -------\n    list[list[int]]\n        Merged, non‑overlapping intervals sorted by start.\n    """"""\n    if not intervals:\n        return []\n\n    # Sort by start; ties by end\n    intervals = sorted(intervals, key=lambda x: (x[0], x[1]))\n\n    merged = []\n    cur_start, cur_end = intervals[0]\n\n    for start, end in intervals[1:]:\n        if start <= cur_end:           # overlaps or touches\n            cur_end = max(cur_end, end)\n        else:\n            merged.append([cur_start, cur_end])\n            cur_start, cur_end = start, end\n\n    merged.append([cur_start, cur_end])\n    return merged\n}'}}",
+1,code_08,coding,OpenRouter,nvidia/nemotron-3-ultra-550b-a55b:free,success,7.321724799996446,1,,True,True,False,,False,356,ok,95.0,0,83.36,False,,"```python
+def merge_intervals(intervals):
+    if not intervals:
+        return []
+    intervals.sort(key=lambda x: x[0])
+    merged = [intervals[0]]
+    for interval in intervals[1:]:
+        if interval[0] <= merged[-1][1]:
+            merged[-1][1] = max(merged[-1][1], interval[1])
+        else:
+            merged.append(interval)
+    return merged
+```"
+1,code_08,coding,Cohere,command-a-plus-05-2026,success,1.2808611000000383,1,,True,True,False,,False,366,ok,95.0,1,95.44,True,,"```python
+def merge_intervals(intervals):
+    if not intervals:
+        return []
+    intervals.sort(key=lambda x: x[0])
+    merged = [intervals[0]]
+    for current in intervals[1:]:
+        prev = merged[-1]
+        if current[0] <= prev[1]:
+            merged[-1][1] = max(prev[1], current[1])
+        else:
+            merged.append(current)
+    return merged
+```"
+1,code_09,coding,Groq,openai/gpt-oss-20b,success,0.5317899000001489,1,,True,True,False,,False,174,ok,100.0,1,98.94,True,,"```python
+import re
+from collections import Counter
+
+def word_count(text: str) -> dict:
+    words = re.findall(r""[A-Za-z]+"", text.lower())
+    return dict(Counter(words))
+```"
+1,code_09,coding,OpenRouter,nvidia/nemotron-3-ultra-550b-a55b:free,failed,10.010169999997743,1,timeout,False,False,False,no_answer,False,0,,,,0.0,False,Request timed out after 10 seconds,
+1,code_09,coding,Cohere,command-a-plus-05-2026,success,1.28935249999995,1,,True,True,False,,False,314,ok,100.0,0,97.42,False,,"```python
+import re
+from collections import Counter
+
+def word_count(text):
+    # Find all sequences of letters, ignoring punctuation and case
+    words = re.findall(r'[a-zA-Z]+', text)
+    # Convert to lowercase and count
+    lower_words = [word.lower() for word in words]
+    return dict(Counter(lower_words))
+```"
+1,code_10,coding,Groq,openai/gpt-oss-20b,failed,0.7040177000017138,1,other_error,False,False,False,no_answer,False,0,,,,0.0,False,"Error code: 400 - {'error': {'message': 'Tool choice is none, but model called a tool', 'type': 'invalid_request_error', 'code': 'tool_use_failed', 'failed_generation': '{""name"": ""code"", ""arguments"": ```python\ndef fib(n: int) -> int:\n    """"""Return the n-th Fibonacci number (fib(0)=0, fib(1)=1).""""""\n    if n < 0:\n        raise ValueError(""n must be non‑negative"")\n\n    # Fast doubling algorithm\n    def _fib_pair(k: int):\n        if k == 0:\n            return (0, 1)\n        a, b = _fib_pair(k >> 1)\n        c = a * ((b << 1) - a)          # F(2k) = F(k) * [2*F(k+1) – F(k)]\n        d = a * a + b * b               # F(2k+1) = F(k)^2 + F(k+1)^2\n        if k & 1:\n            return (d, c + d)           # (F(2k+1), F(2k+2))\n        else:\n            return (c, d)               # (F(2k), F(2k+1))\n\n    return _fib_pair(n)[0]\n```}'}}",
+1,code_10,coding,OpenRouter,nvidia/nemotron-3-ultra-550b-a55b:free,success,6.199523499999486,1,,True,True,False,,False,87,ok,80.0,1,79.6,False,,"def fib(n):
+    a, b = 0, 1
+    for _ in range(n):
+        a, b = b, a + b
+    return a"
+1,code_10,coding,Cohere,command-a-plus-05-2026,success,0.9794141999991552,1,,True,True,False,,False,166,ok,95.0,0,96.04,True,,"```python
+def fib(n):
+    if n < 0:
+        raise ValueError(""n must be non-negative"")
+    a, b = 0, 1
+    for _ in range(n):
+        a, b = b, a + b
+    return a
+```"
+1,code_11,coding,Groq,openai/gpt-oss-20b,success,0.578583599999547,1,,True,True,False,,False,292,ok,100.0,2,98.84,True,,"```python
+def binary_search(arr, x):
+    left, right = 0, len(arr) - 1
+    while left <= right:
+        mid = (left + right) // 2
+        if arr[mid] == x:
+            return mid
+        elif arr[mid] < x:
+            left = mid + 1
+        else:
+            right = mid - 1
+    return -1
+```"
+1,code_11,coding,OpenRouter,nvidia/nemotron-3-ultra-550b-a55b:free,success,4.223139400000946,1,,True,True,False,,False,274,ok,100.0,1,91.55,False,,"def binary_search(arr, x):
+    low = 0
+    high = len(arr) - 1
+    while low <= high:
+        mid = (low + high) // 2
+        if arr[mid] == x:
+            return mid
+        elif arr[mid] < x:
+            low = mid + 1
+        else:
+            high = mid - 1
+    return -1"
+1,code_11,coding,Cohere,command-a-plus-05-2026,success,1.2098456999992777,1,,True,True,False,,False,288,ok,100.0,0,97.58,False,,"```python
+def binary_search(arr, x):
+    low = 0
+    high = len(arr) - 1
+    while low <= high:
+        mid = (low + high) // 2
+        if arr[mid] == x:
+            return mid
+        elif arr[mid] < x:
+            low = mid + 1
+        else:
+            high = mid - 1
+    return -1
+```"
+1,code_12,coding,Groq,openai/gpt-oss-20b,success,0.4280685000012454,1,,True,True,False,,False,128,ok,90.0,1,95.14,False,,"```python
+def rotate_matrix(m):
+    return [ [m[row][col] for row in reversed(range(len(m)))] for col in range(len(m[0])) ]
+```
+"
+1,code_12,coding,OpenRouter,nvidia/nemotron-3-ultra-550b-a55b:free,success,5.976004499996634,1,,True,True,False,,False,69,ok,95.0,0,86.05,False,,"def rotate_matrix(m):
+    return [list(row) for row in zip(*m[::-1])]"
+1,code_12,coding,Cohere,command-a-plus-05-2026,success,1.0513013999989198,1,,True,True,False,,False,338,ok,95.0,2,95.9,True,,"```python
+def rotate_matrix(m):
+    if not m:
+        return []
+    n_rows = len(m)
+    n_cols = len(m[0])
+    # Create new matrix with dimensions swapped
+    rotated = [[0] * n_rows for _ in range(n_cols)]
+    for i in range(n_rows):
+        for j in range(n_cols):
+            rotated[j][n_rows - 1 - i] = m[i][j]
+    return rotated
+```"
+1,code_13,coding,Groq,openai/gpt-oss-20b,success,0.5725542000000132,1,,True,True,False,,False,384,ok,100.0,2,98.85,True,,"def longest_common_prefix(strs):
+    if not strs:
+        return ''
+    # Find the shortest string length
+    min_len = min(len(s) for s in strs)
+    if min_len == 0:
+        return ''
+    prefix = []
+    for i in range(min_len):
+        ch = strs[0][i]
+        if all(s[i] == ch for s in strs):
+            prefix.append(ch)
+        else:
+            break
+    return ''.join(prefix)"
+1,code_13,coding,OpenRouter,nvidia/nemotron-3-ultra-550b-a55b:free,success,2.8137703000029433,1,,True,True,False,,False,388,ok,100.0,1,94.37,False,,"```python
+def longest_common_prefix(strs):
+    if not strs:
+        return ''
+    if len(strs) == 1:
+        return strs[0]
+    
+    min_len = min(len(s) for s in strs)
+    prefix = []
+    
+    for i in range(min_len):
+        char = strs[0][i]
+        if all(s[i] == char for s in strs):
+            prefix.append(char)
+        else:
+            break
+    
+    return ''.join(prefix)
+```"
+1,code_13,coding,Cohere,command-a-plus-05-2026,success,0.7687131999991834,1,,True,True,False,,False,269,ok,100.0,0,98.46,False,,"```python
+def longest_common_prefix(strs):
+    if not strs:
+        return ''
+    prefix = strs[0]
+    for s in strs[1:]:
+        while not s.startswith(prefix):
+            prefix = prefix[:-1]
+            if not prefix:
+                return ''
+    return prefix
+```"
+1,code_14,coding,Groq,openai/gpt-oss-20b,success,0.5916734999991604,1,,True,True,False,,False,163,ok,95.0,2,96.82,True,,"```python
+def chunk(lst, size):
+    """"""Split list into consecutive sublists of length `size`.""""""
+    return [lst[i:i + size] for i in range(0, len(lst), size)]
+```"
+1,code_14,coding,OpenRouter,nvidia/nemotron-3-ultra-550b-a55b:free,success,6.321238600001379,1,,True,True,False,,False,82,ok,100.0,0,87.36,False,,"def chunk(lst, size):
+    return [lst[i:i+size] for i in range(0, len(lst), size)]"
+1,code_14,coding,Cohere,command-a-plus-05-2026,success,0.8899921000011091,1,,True,True,False,,False,96,ok,90.0,1,94.22,False,,"```python
+def chunk(lst, size):
+    return [lst[i:i+size] for i in range(0, len(lst), size)]
+```"
+1,code_15,coding,Groq,openai/gpt-oss-20b,success,1.1981963999999152,1,,True,True,False,,False,182,ok,100.0,0,97.6,True,,"```python
+def is_anagram(a, b):
+    from collections import Counter
+    normalize = lambda s: Counter(c.lower() for c in s if c.isalnum())
+    return normalize(a) == normalize(b)
+```"
+1,code_15,coding,OpenRouter,nvidia/nemotron-3-ultra-550b-a55b:free,success,5.370764700000109,1,,True,True,False,,False,125,ok,100.0,2,89.26,False,,"def is_anagram(a, b):
+    a = a.replace("" "", """").lower()
+    b = b.replace("" "", """").lower()
+    return sorted(a) == sorted(b)"
+1,code_15,coding,Cohere,command-a-plus-05-2026,success,1.7393171999999595,1,,True,True,False,,False,269,ok,100.0,1,96.52,False,,"```python
+def is_anagram(a, b):
+    # Normalize strings: lower case and remove spaces
+    a_normalized = ''.join(a.lower().split())
+    b_normalized = ''.join(b.lower().split())
+    # Compare sorted characters
+    return sorted(a_normalized) == sorted(b_normalized)
+```"
+1,code_16,coding,Groq,openai/gpt-oss-20b,success,0.4783122999999705,1,,True,True,False,,False,237,ok,95.0,2,97.04,True,,"```python
+def gcd(a: int, b: int) -> int:
+    """"""Return the greatest common divisor of non‑negative integers a and b.
+    gcd(0, 0) == 0.""""""
+    if a == 0 and b == 0:
+        return 0
+    while b:
+        a, b = b, a % b
+    return a
+```"
+1,code_16,coding,OpenRouter,nvidia/nemotron-3-ultra-550b-a55b:free,success,6.313368900000114,1,,True,True,False,,False,107,ok,100.0,0,87.37,False,,"def gcd(a, b):
+    if a == 0 and b == 0:
+        return 0
+    while b:
+        a, b = b, a % b
+    return a"
+1,code_16,coding,Cohere,command-a-plus-05-2026,success,1.9102966000000379,1,,True,True,False,,False,78,ok,90.0,1,92.18,False,,"```python
+def gcd(a, b):
+    while b:
+        a, b = b, a % b
+    return a
+```"
+1,code_17,coding,Groq,openai/gpt-oss-20b,success,0.5754051999999774,1,,True,True,False,,False,344,ok,100.0,1,98.85,True,,"```python
+def rle(s: str) -> str:
+    if not s:
+        return ''
+    result = []
+    count = 1
+    prev = s[0]
+    for c in s[1:]:
+        if c == prev:
+            count += 1
+        else:
+            result.append(f'{prev}{count}')
+            prev = c
+            count = 1
+    result.append(f'{prev}{count}')
+    return ''.join(result)
+```"
+1,code_17,coding,OpenRouter,nvidia/nemotron-3-ultra-550b-a55b:free,success,3.4396984999998494,1,,True,True,False,,False,329,ok,100.0,2,93.12,False,,"def rle(s):
+    if not s:
+        return """"
+    result = []
+    count = 1
+    prev = s[0]
+    for char in s[1:]:
+        if char == prev:
+            count += 1
+        else:
+            result.append(prev + str(count))
+            prev = char
+            count = 1
+    result.append(prev + str(count))
+    return """".join(result)"
+1,code_17,coding,Cohere,command-a-plus-05-2026,success,1.0837572000000364,1,,True,True,False,,False,316,ok,100.0,0,97.83,False,,"```python
+def rle(s):
+    if not s:
+        return ''
+    result = []
+    count = 1
+    for i in range(1, len(s)):
+        if s[i] == s[i-1]:
+            count += 1
+        else:
+            result.append(s[i-1] + str(count))
+            count = 1
+    result.append(s[-1] + str(count))
+    return ''.join(result)
+```"
+1,code_18,coding,Groq,openai/gpt-oss-20b,success,0.5683467999999721,1,,True,True,False,,False,190,ok,100.0,1,98.86,True,,"```python
+def dedupe(lst):
+    seen = set()
+    result = []
+    for item in lst:
+        if item not in seen:
+            seen.add(item)
+            result.append(item)
+    return result
+```"
+1,code_18,coding,OpenRouter,nvidia/nemotron-3-ultra-550b-a55b:free,success,3.1173851999999442,1,,True,True,False,,False,176,ok,100.0,2,93.77,False,,"def dedupe(lst):
+    seen = set()
+    result = []
+    for item in lst:
+        if item not in seen:
+            seen.add(item)
+            result.append(item)
+    return result"
+1,code_18,coding,Cohere,command-a-plus-05-2026,success,1.07687900000019,1,,True,True,False,,False,190,ok,100.0,0,97.85,False,,"```python
+def dedupe(lst):
+    seen = set()
+    result = []
+    for item in lst:
+        if item not in seen:
+            seen.add(item)
+            result.append(item)
+    return result
+```"
+1,code_19,coding,Groq,openai/gpt-oss-20b,success,0.6705965999999535,1,,True,True,False,,False,831,ok,100.0,0,98.66,True,,"import re
+
+def parse_duration(s: str) -> int:
+    """"""
+    Convert duration strings like '1h30m15s', '45m', '2h', '10s' into total seconds.
+    Each unit can appear at most once, and must be in the order h, m, s.
+    """"""
+    pattern = r'^\s*(?:(?P<h>\d+)h)?(?:(?P<m>\d+)m)?(?:(?P<s>\d+)s)?\s*$'
+    match = re.match(pattern, s)
+    if not match:
+        raise ValueError(f""Invalid duration format: {s!r}"")
+
+    hours = int(match.group('h')) if match.group('h') else 0
+    minutes = int(match.group('m')) if match.group('m') else 0
+    seconds = int(match.group('s')) if match.group('s') else 0
+
+    return hours * 3600 + minutes * 60 + seconds
+
+# Example usage:
+# print(parse_duration('1h30m15s'))  # 5415
+# print(parse_duration('45m'))      # 2700
+# print(parse_duration('2h'))       # 7200
+# print(parse_duration('10s'))      # 10"
+1,code_19,coding,OpenRouter,nvidia/nemotron-3-ultra-550b-a55b:free,truncated,9.98729830000002,1,,False,False,False,python_tests,False,209,ok,30.0,2,39.53,False,,"import re
+
+def parse_duration(s):
+    total = 0
+    for value, unit in re.findall(r'(\d+)([hms])', s):
+        if unit == 'h':
+            total += int(value) * 3600
+        elif unit == 'm':
+            total"
+1,code_19,coding,Cohere,command-a-plus-05-2026,success,2.171025299999883,1,,True,True,False,,False,1007,ok,90.0,1,91.66,False,,"```python
+def parse_duration(s):
+    # Initialize total seconds to 0
+    total = 0
+    # Iterate over the string to parse numbers followed by unit letters
+    i = 0
+    while i < len(s):
+        # Extract numeric part
+        j = i
+        while j < len(s) and s[j].isdigit():
+            j += 1
+        if j == i:
+            # No digit found, break or raise error? According to problem, assume valid input.
+            break
+        num = int(s[i:j])
+        # Determine unit
+        if j < len(s):
+            unit = s[j]
+            if unit == 'h':
+                total += num * 3600
+                i = j + 1
+            elif unit == 'm':
+                total += num * 60
+                i = j + 1
+            elif unit == 's':
+                total += num
+                i = j + 1
+            else:
+                # Unexpected unit, skip? According to problem, assume valid input.
+                i = j
+        else:
+            # No unit after number, break
+            break
+    return total
+```"
+1,code_20,coding,Groq,openai/gpt-oss-20b,success,0.6742604999999458,1,,True,True,False,,False,444,ok,88.0,2,93.85,True,,"```python
+def arabic_digits_to_int(s: str) -> int:
+    """"""
+    Convert a string containing Arabic-Indic digits (٠-٩) and/or Western digits (0-9)
+    into an integer. Non-digit characters are ignored.
+    """"""
+    arabic_to_western = {chr(ord('٠') + i): str(i) for i in range(10)}
+    numeric_str = ''.join(arabic_to_western.get(ch, ch) for ch in s if ch.isdigit() or ch in arabic_to_western)
+    return int(numeric_str) if numeric_str else 0
+```"
+1,code_20,coding,OpenRouter,nvidia/nemotron-3-ultra-550b-a55b:free,success,5.893476299999975,1,,True,True,False,,False,187,ok,95.0,0,86.21,False,,"def arabic_digits_to_int(s):
+    arabic_digits = '٠١٢٣٤٥٦٧٨٩'
+    western_digits = '0123456789'
+    trans = str.maketrans(arabic_digits, western_digits)
+    return int(s.translate(trans))"
+1,code_20,coding,Cohere,command-a-plus-05-2026,success,2.103431899999805,1,,True,True,False,,False,841,ok,90.0,1,91.79,False,,"```python
+def arabic_digits_to_int(s):
+    """"""
+    Convert a string containing Arabic-Indic digits (٠١٢٣٤٥٦٧٨٩) and/or Western digits (0-9) into an int.
+    """"""
+    # Mapping of Arabic-Indic digits to their integer values
+    arabic_map = {
+        '٠': 0, '١': 1, '٢': 2, '٣': 3, '٤': 4,
+        '٥': 5, '٦': 6, '٧': 7, '٨': 8, '٩': 9
+    }
+    
+    total = 0
+    for ch in s:
+        # Determine the digit value; if character is a Western digit, use int(ch)
+        if ch in arabic_map:
+            digit = arabic_map[ch]
+        else:
+            # Assume it's a Western digit; if not, ignore or raise error? We'll ignore non-digit characters.
+            try:
+                digit = int(ch)
+            except ValueError:
+                continue  # skip non-digit characters
+        total = total * 10 + digit
+    
+    return total
+```"
+1,instr_01,instruction,Groq,openai/gpt-oss-20b,success,0.5347094999999626,1,,True,True,False,,False,29,ok,100.0,2,98.93,True,,"- Apple  
+- Banana  
+- Cherry"
+1,instr_01,instruction,OpenRouter,nvidia/nemotron-3-ultra-550b-a55b:free,success,4.87392049999994,1,,True,True,False,,False,25,ok,100.0,0,90.25,False,,"- Apple
+- Banana
+- Cherry"
+1,instr_01,instruction,Cohere,command-a-plus-05-2026,success,1.1748188999999911,1,,False,False,False,bullet_items;line_count,True,239,ok,30.0,1,69.65,False,,"User wants exactly three fruits as a bulleted list, each line starting with '- '. Write nothing else. So output:
+
+- Apple
+- Banana
+- Cherry
+
+Make sure exactly three items, each line begins with '- '. No extra text.- Apple
+- Banana
+- Cherry"
+1,instr_02,instruction,Groq,openai/gpt-oss-20b,success,0.529321100000061,1,,True,True,False,,False,2,ok,100.0,0,98.94,True,,OK
+1,instr_02,instruction,OpenRouter,nvidia/nemotron-3-ultra-550b-a55b:free,success,0.8323393999999098,1,,True,True,False,,False,2,ok,100.0,2,98.34,False,,OK
+1,instr_02,instruction,Cohere,command-a-plus-05-2026,success,0.5403045000000475,1,,True,True,False,,False,2,ok,100.0,1,98.92,False,,OK
+1,instr_03,instruction,Groq,openai/gpt-oss-20b,success,0.4345184999999674,1,,True,True,False,,False,90,ok,100.0,1,99.13,False,,"the ocean stretches endlessly, its waves whispering ancient secrets to anyone who listens."
+1,instr_03,instruction,OpenRouter,nvidia/nemotron-3-ultra-550b-a55b:free,success,1.495701299999837,1,,True,True,False,,False,81,ok,100.0,0,97.01,False,,"the ocean stretches endlessly, its waves whispering ancient stories to the shore."
+1,instr_03,instruction,Cohere,command-a-plus-05-2026,success,0.4244739999999183,1,,True,True,False,,False,68,ok,100.0,2,99.15,True,,the ocean whispers endless mysteries beneath its shimmering surface.
+1,instr_04,instruction,Groq,openai/gpt-oss-20b,success,0.4353522999999768,1,,True,True,False,,False,24,ok,100.0,1,99.13,False,,"{""name"":""Sara"",""age"":29}"
+1,instr_04,instruction,OpenRouter,nvidia/nemotron-3-ultra-550b-a55b:free,success,4.465892499999882,1,,True,True,False,,False,24,ok,100.0,2,91.07,False,,"{""name"":""Sara"",""age"":29}"
+1,instr_04,instruction,Cohere,command-a-plus-05-2026,success,0.36783189999982824,1,,True,True,False,,False,24,ok,100.0,0,99.26,True,,"{""name"":""Sara"",""age"":29}"
+1,instr_05,instruction,Groq,openai/gpt-oss-20b,success,0.48166919999994207,1,,True,True,False,,False,10,ok,100.0,0,99.04,True,,"Paris
+Rome"
+1,instr_05,instruction,OpenRouter,nvidia/nemotron-3-ultra-550b-a55b:free,success,1.478008300000056,1,,True,True,False,,False,10,ok,100.0,1,97.04,False,,"Paris
+Rome"
+1,instr_05,instruction,Cohere,command-a-plus-05-2026,success,0.7586187000001701,1,,True,True,False,,False,10,ok,100.0,2,98.48,False,,"Paris
+Rome"
+1,instr_06,instruction,Groq,openai/gpt-oss-20b,success,0.4763852000000952,1,,True,True,False,,False,5,ok,0.0,2,59.05,False,,Blue.
+1,instr_06,instruction,OpenRouter,nvidia/nemotron-3-ultra-550b-a55b:free,success,0.7821690000000672,1,,True,True,False,,False,4,ok,100.0,0,98.44,True,,blue
+1,instr_06,instruction,Cohere,command-a-plus-05-2026,success,0.7791173999999046,1,,False,False,False,regex_full,True,371,ok,0.0,1,58.44,False,,"<EOS_TOKEN>The user asks: ""In one word only: what color is a clear daytime sky?"" The answer is ""blue"". Must respond with one word only. So answer: ""Blue"". Must be exactly one word. Should be capitalized? The question: ""what color is a clear daytime sky?"" The typical answer: ""blue"". So respond with ""Blue"". One word. Ensure no extra punctuation. Probably just ""Blue"".Blue"
+1,instr_07,instruction,Groq,openai/gpt-oss-20b,success,0.5177602999999635,1,,True,True,False,,False,14,ok,100.0,0,98.96,True,,"1.
+2.
+3.
+4.
+5."
+1,instr_07,instruction,OpenRouter,nvidia/nemotron-3-ultra-550b-a55b:free,success,1.2652345999999852,1,,True,True,False,,False,14,ok,100.0,2,97.47,False,,"1.
+2.
+3.
+4.
+5."
+1,instr_07,instruction,Cohere,command-a-plus-05-2026,success,0.6492178000000877,1,,False,False,False,numbered_items;line_count,True,181,ok,0.0,1,58.7,False,,"User wants a numbered list from 1 to 5 in format '1.', '2.', etc. Write nothing else. So output:
+
+1.
+2.
+3.
+4.
+5.
+
+Probably each on separate line. Ensure no extra text.1.
+2.
+3.
+4.
+5."
+1,instr_08,instruction,Groq,openai/gpt-oss-20b,success,0.4756155000000035,1,,True,True,False,,False,7,ok,100.0,0,99.05,True,,Bonjour
+1,instr_08,instruction,OpenRouter,nvidia/nemotron-3-ultra-550b-a55b:free,success,1.025371499999892,1,,True,True,False,,False,7,ok,100.0,1,97.95,False,,bonjour
+1,instr_08,instruction,Cohere,command-a-plus-05-2026,success,0.7115263000000596,1,,True,True,False,,False,7,ok,100.0,2,98.58,False,,Bonjour
+1,instr_09,instruction,Groq,openai/gpt-oss-20b,success,0.536418600000161,1,,True,True,False,,False,83,failed,,1,78.93,False,,"Python: an interpreted, high-level language emphasizing readability and simplicity."
+1,instr_09,instruction,OpenRouter,nvidia/nemotron-3-ultra-550b-a55b:free,success,2.1113189000000148,1,,True,True,False,,False,61,failed,,2,75.78,False,,"Versatile, readable, high-level language with vast libraries."
+1,instr_09,instruction,Cohere,command-a-plus-05-2026,success,0.5283480999999028,1,,True,True,False,,False,83,failed,,0,78.94,True,,"Python is a versatile, high-level, readable language for diverse programming tasks."
+1,instr_10,instruction,Groq,openai/gpt-oss-20b,success,0.4998435999998492,1,,True,True,False,,False,1,ok,100.0,2,99.0,True,,7
+1,instr_10,instruction,OpenRouter,nvidia/nemotron-3-ultra-550b-a55b:free,success,1.3920025999998416,1,,True,True,False,,False,1,ok,100.0,1,97.22,False,,7
+1,instr_10,instruction,Cohere,command-a-plus-05-2026,success,0.5587242000001424,1,,True,True,False,,False,1,ok,100.0,0,98.88,False,,7
+1,ar_fact_01,arabic,Groq,openai/gpt-oss-20b,success,0.495978599999944,1,,True,True,False,,False,46,ok,100.0,2,99.01,False,,عاصمة دولة الإمارات العربية المتحدة هي أبوظبي.
+1,ar_fact_01,arabic,OpenRouter,nvidia/nemotron-3-ultra-550b-a55b:free,success,0.7632648000001154,1,,True,True,False,,False,46,ok,100.0,1,98.47,False,,عاصمة دولة الإمارات العربية المتحدة هي أبوظبي.
+1,ar_fact_01,arabic,Cohere,command-a-plus-05-2026,success,0.4884027000000515,1,,True,True,False,,False,46,ok,100.0,0,99.02,True,,أبوظبي هي عاصمة دولة الإمارات العربية المتحدة.
+1,ar_fact_02,arabic,Groq,openai/gpt-oss-20b,success,0.47292270000002645,1,,True,True,False,,False,4,ok,100.0,1,99.05,False,,1971
+1,ar_fact_02,arabic,OpenRouter,nvidia/nemotron-3-ultra-550b-a55b:free,success,1.2347147000000405,1,,True,True,False,,False,4,ok,100.0,2,97.53,False,,1971
+1,ar_fact_02,arabic,Cohere,command-a-plus-05-2026,success,0.4423160999999709,1,,True,True,False,,False,4,ok,100.0,0,99.12,True,,1971
+1,ar_dial_eg_01,arabic,Groq,openai/gpt-oss-20b,success,0.5898164000000179,1,,True,True,False,,False,7,ok,15.0,1,64.82,False,,5 مساءً
+1,ar_dial_eg_01,arabic,OpenRouter,nvidia/nemotron-3-ultra-550b-a55b:free,success,1.9424165000000357,1,,True,True,False,,False,7,ok,10.0,0,60.12,False,,5 العصر
+1,ar_dial_eg_01,arabic,Cohere,command-a-plus-05-2026,success,15.837389699999903,2,,False,False,False,regex_any,True,1324,ok,95.0,2,73.5,True,,"<EOS_TOKEN>السؤال: لو الساعة دلوقتي 3 العصر في القاهرة في شهر نوفمبر، تبقى الساعة كام في دبي؟ قول الساعة بس.
+
+نحتاج نعرف فرق التوقيت بين القاهرة ودبي في شهر نوفمبر.
+
+القاهرة (مصر) بتستخدم توقيت الشرق الأوسط (EET) في الشتاء، UTC+2. في الصيف بتستخدم EDT (UTC+3). في شهر نوفمبر، القاهرة في توقيت الشتاء (بما إن التوقيت الصيفي بيبدأ في آخر جمعة من مارس لآخر جمعة من أكتوبر، على ما أعتقد). في الواقع، مصر كانت بتستخدم التوقيت الصيفي من آخر جمعة في مارس لآخر جمعة في أكتوبر (تقريباً). في شهر نوفمبر، ده توقيت شتوي، UTC+2.
+
+دبي (الإمارات) بتستخدم توقيت الإمارات العربي المتحدة (GST) على مدار السنة: UTC+4. مفيش توقيت صيفي.
+
+وبالتالي فرق التوقيت: دبي UTC+4، القاهرة UTC+2 => دبي ساعة واحدة متقدمة عن القاهرة. يعني لو في القاهرة الساعة 3 العصر، يبقى في دبي الساعة 4 العصر.
+
+وبالتالي الإجابة: 4 العصر.
+
+لكن السؤال: ""قول الساعة بس."" يعني عايزين الساعة بس، مش نص. لكن الإجابة المفروض تكون الساعة، زي ""4:00"". أو ""4 العصر"". السؤال: ""تبقى الساعة كام في دبي؟ قول الساعة بس."" ممكن يتوقع إجابة زي ""4:00"". أو ""4 العصر"". الأفضل نقول ""4:00"". لكن ""قول الساعة بس."" ممكن يعني عايز الساعة بس، مش نص. لكن إجابة نموذجية: ""4:00"". ممكن كمان ""4 العصر"". بما إن السؤال بيقول ""الساعة كام""، ممكن الإجابة ""4"". لكن الأفضل ""4:00"". بما إن قال ""قول الساعة بس.""، أظن عايز الساعة بس، مش نص. ممكن ""4:00"". أو ""4 العصر"". لكن ""الساعة"" ممكن تكون ""4:00"". هقول ""4:00"".4:00"
+1,ar_dial_gulf_01,arabic,Groq,openai/gpt-oss-20b,success,0.5781822999999804,1,,True,True,False,,False,43,ok,90.0,1,94.84,False,,كلمة “أبغى” في اللهجة الخليجية تعني “أريد”.
+1,ar_dial_gulf_01,arabic,OpenRouter,nvidia/nemotron-3-ultra-550b-a55b:free,success,3.6467312999998285,1,,True,True,False,,False,29,ok,70.0,2,80.71,False,,"تعني **""أريد""** أو **""أحب""**."
+1,ar_dial_gulf_01,arabic,Cohere,command-a-plus-05-2026,success,1.4733517999998185,1,,True,True,False,,False,129,ok,95.0,0,95.05,True,,"""أبغى"" في اللهجة الخليجية تعني ""أريد"" أو ""أتمنى"" أو ""أسعى إلى"". تُستخدم للتعبير عن الرغبة في الحصول على شيء ما أو القيام بشيء ما."
+1,ar_dial_lev_01,arabic,Groq,openai/gpt-oss-20b,success,0.37918500000000677,1,,False,False,False,contains_any,False,18,ok,80.0,1,91.24,False,,"""لحظة"" أو ""فورًا""."
+1,ar_dial_lev_01,arabic,OpenRouter,nvidia/nemotron-3-ultra-550b-a55b:free,success,2.4196488999998564,1,,True,True,False,,False,4,ok,85.0,0,89.16,False,,الآن
+1,ar_dial_lev_01,arabic,Cohere,command-a-plus-05-2026,success,0.7193555000001197,1,,True,True,False,,False,37,ok,85.0,2,92.56,True,,"""هلّق"" باللهجة الشامية بتيعني ""الآن""."
+1,ar_dial_mag_01,arabic,Groq,openai/gpt-oss-20b,success,0.5788242999999511,1,,True,True,False,,False,4,ok,100.0,0,98.84,True,,كثير
+1,ar_dial_mag_01,arabic,OpenRouter,nvidia/nemotron-3-ultra-550b-a55b:free,success,2.5052782000000207,1,,True,True,False,,False,4,ok,100.0,2,94.99,False,,كثير
+1,ar_dial_mag_01,arabic,Cohere,command-a-plus-05-2026,success,0.5899907999998959,1,,True,True,False,,False,5,ok,100.0,1,98.82,False,,كثير.
+1,ar_gram_01,arabic,Groq,openai/gpt-oss-20b,success,0.4260795000000144,1,,False,False,False,contains_any,False,28,ok,90.0,1,95.15,False,,الطالبُ: مبتدأ مرفوع بالضمة.
+1,ar_gram_01,arabic,OpenRouter,nvidia/nemotron-3-ultra-550b-a55b:free,success,3.2365389999999934,1,,True,True,False,,False,30,ok,20.0,2,61.53,False,,**فاعل مرفوع بالضمة الظاهرة**.
+1,ar_gram_01,arabic,Cohere,command-a-plus-05-2026,success,0.9822672000000239,1,,False,False,False,contains_any,False,71,ok,95.0,0,96.04,True,,"كلمة ""الطالبُ"" هي مبتدأ، مرفوع، وعلامات رفعه هي الضمة الظاهرة على آخره."
+1,ar_gram_02,arabic,Groq,openai/gpt-oss-20b,success,0.5801125999998931,1,,True,True,False,,False,5,ok,100.0,2,98.84,True,,مساجد
+1,ar_gram_02,arabic,OpenRouter,nvidia/nemotron-3-ultra-550b-a55b:free,success,1.952484899999945,1,,True,True,False,,False,5,ok,100.0,1,96.1,False,,مساجد
+1,ar_gram_02,arabic,Cohere,command-a-plus-05-2026,success,0.5980079999999361,1,,True,True,False,,False,6,ok,100.0,0,98.8,False,,مساجد.
+1,ar_diac_01,arabic,Groq,openai/gpt-oss-20b,success,0.961937799999987,1,,False,False,False,contains_any_raw,False,3,ok,10.0,1,62.08,False,,كتب
+1,ar_diac_01,arabic,OpenRouter,nvidia/nemotron-3-ultra-550b-a55b:free,success,1.5688920000000053,1,,True,True,False,,False,6,ok,95.0,0,94.86,False,,كُتِبَ
+1,ar_diac_01,arabic,Cohere,command-a-plus-05-2026,success,0.4318607999998676,1,,True,True,False,,False,6,ok,95.0,2,97.14,True,,كُتِبَ
+1,ar_num_01,arabic,Groq,openai/gpt-oss-20b,success,0.968346800000063,1,,True,True,False,,False,4,ok,100.0,2,98.06,False,,2026
+1,ar_num_01,arabic,OpenRouter,nvidia/nemotron-3-ultra-550b-a55b:free,success,0.7598465999999462,1,,True,True,False,,False,4,ok,100.0,0,98.48,True,,2026
+1,ar_num_01,arabic,Cohere,command-a-plus-05-2026,success,0.6148487999998906,1,,False,False,False,contains_any,False,23,ok,0.0,1,58.77,False,,Two thousand twenty-six
+1,ar_math_01,arabic,Groq,openai/gpt-oss-20b,success,0.9117928999999094,1,,True,True,False,,False,3,ok,100.0,1,98.18,True,,200
+1,ar_math_01,arabic,OpenRouter,nvidia/nemotron-3-ultra-550b-a55b:free,success,0.9097675000000436,1,,True,True,False,,False,3,ok,100.0,2,98.18,False,,200
+1,ar_math_01,arabic,Cohere,command-a-plus-05-2026,success,1.2056387000000086,1,,False,False,False,regex_none;max_words,True,447,ok,80.0,0,89.59,False,,"The user asks: ""A perfume bottle costs $250 and is on sale for 20% off. What is the price after the discount? Write only the number.""
+
+We need to compute 20% off of $250. 20% of 250 = 0.20 * 250 = 50. So price after discount = 250 - 50 = 200.
+
+They want only the number. Probably ""200"". Should we include a currency sign? They said ""Write only the number."" So just ""200"". Probably no decimal. So answer: 200.
+
+We must answer directly, no extra.200"
+1,ar_sent_01,arabic,Groq,openai/gpt-oss-20b,success,0.45310029999996004,1,,True,True,False,,False,4,ok,100.0,1,99.09,True,,سلبي
+1,ar_sent_01,arabic,OpenRouter,nvidia/nemotron-3-ultra-550b-a55b:free,success,1.5740499999999429,1,,True,True,False,,False,4,ok,100.0,0,96.85,False,,سلبي
+1,ar_sent_01,arabic,Cohere,command-a-plus-05-2026,success,1.061054600000034,1,,False,False,False,max_words;arabic_ratio,True,553,ok,20.0,2,65.88,False,,"The user asks: ""Classify the sentiment in the following sentence with only one word (Positive / Negative / Neutral): ""the service was very bad and the agent was delayed by 2 hours"".""
+
+We need to output one word: Positive, Negative, or Neutral. The sentence expresses negative sentiment: service was very bad, agent delayed. So answer: Negative.
+
+We must follow system instruction: ""Answer the user's question directly. Return only the final answer. Do not output planning, reasoning, drafts, analysis, or calculations.""
+
+Thus output just ""Negative"".سلبي"
+1,ar_sent_02,arabic,Groq,openai/gpt-oss-20b,success,0.7010741999999937,1,,False,False,False,contains_any;not_contains,False,5,ok,10.0,1,62.6,False,,محايد
+1,ar_sent_02,arabic,OpenRouter,nvidia/nemotron-3-ultra-550b-a55b:free,success,5.59242160000008,1,,True,True,False,,False,4,ok,5.0,2,50.82,False,,سلبي
+1,ar_sent_02,arabic,Cohere,command-a-plus-05-2026,success,0.9017805000000862,1,,False,False,False,contains_any;not_contains;max_words;arabic_ratio,True,370,ok,95.0,0,96.2,True,,"user asks: ""Classify the sentiment in the following sentence using only one word (positive/negative/neutral): ""Wow so fast! Order arrived in just a week 👏"". We need to output a single word: positive/negative/neutral. The sentence: ""Wow so fast! Order arrived in just a week 👏"". The sentiment is positive: expressing surprise and satisfaction. So answer ""positive"".إيجابي"
+1,ar_intent_01,arabic,Groq,openai/gpt-oss-20b,success,1.0000746999999137,1,,True,True,False,,False,5,ok,100.0,1,98.0,False,,إرجاع
+1,ar_intent_01,arabic,OpenRouter,nvidia/nemotron-3-ultra-550b-a55b:free,success,2.40909889999989,1,,True,True,False,,False,5,ok,100.0,2,95.18,False,,إرجاع
+1,ar_intent_01,arabic,Cohere,command-a-plus-05-2026,success,0.7893430999999964,1,,True,True,False,,False,5,ok,100.0,0,98.42,True,,إرجاع
+1,ar_intent_02,arabic,Groq,openai/gpt-oss-20b,success,0.3619968999998946,1,,True,True,False,,False,7,ok,100.0,1,99.28,True,,استفسار
+1,ar_intent_02,arabic,OpenRouter,nvidia/nemotron-3-ultra-550b-a55b:free,success,2.5189717999999175,1,,True,True,False,,False,7,ok,100.0,2,94.96,False,,استفسار
+1,ar_intent_02,arabic,Cohere,command-a-plus-05-2026,success,1.0746990999998616,1,,False,False,False,max_words;arabic_ratio,True,375,ok,90.0,0,93.85,False,,"<EOS_TOKEN>The user asks: ""Determine the customer's intention in one word from the list: purchase, inquiry, complaint, return. Customer message: ""عندكم عود كمبودي بحجم ٥٠ مل؟ وكم سعره؟""""
+
+We need to output a single word: purchase, inquiry, complaint, return.
+
+The message is asking if they have a certain product and its price. That's an inquiry. So answer: ""inquiry"".استفسار"
+1,ar_translit_01,arabic,Groq,openai/gpt-oss-20b,success,0.5446436999998241,1,,True,True,False,,False,86,failed,,0,78.91,True,,نعم، فكلاهما يشيران إلى خشب العود (عود)، وهو نفس المادة التي تُستخدَم في صناعة العطور.
+1,ar_translit_01,arabic,OpenRouter,nvidia/nemotron-3-ultra-550b-a55b:free,success,2.4013150999999198,1,,True,True,False,,False,111,failed,,1,75.2,False,,"نعم، لأن ""oud"" هي النطق الإنجليزي لكلمة ""عود"" العربية وتشيران معاً إلى خشب العطر المستخرج من أشجار الأكويلاريا."
+1,ar_translit_01,arabic,Cohere,command-a-plus-05-2026,success,2.3819078999999874,1,,False,False,False,arabic_ratio,True,974,failed,,2,75.24,False,,"The user asks: ""In the context of perfumes, do the terms 'oud' and 'agarwood' refer to the same substance? Answer with either yes or no and then provide a brief explanation in one sentence.""
+
+We need to answer with either yes or no and then a brief explanation in one sentence. So format: ""Yes. ..."" or ""No. ..."" The answer: Yes, they refer to the same substance; oud is the aromatic resin from agarwood. So we can say ""Yes. Oud is the aromatic resin derived from agarwood, so the terms refer to the same material."" That's one sentence after the yes. Ensure it's one sentence explanation. The entire answer must be yes/no then a brief explanation in one sentence. Possibly separate with a period after yes, then the explanation sentence. Could be ""Yes. Oud is the aromatic resin obtained from agarwood, so the terms refer to the same material."" That is one sentence. Good.نعم. عطر العود هو الراتنج العطري المستخرج من خشب الأجار، وبالتالي فإن المصطلحين يشيران إلى نفس المادة."
+1,ar_arabizi_01,arabic,Groq,openai/gpt-oss-20b,success,0.7846137999999883,1,,True,True,False,,False,33,ok,70.0,1,86.43,False,,أنا عايز أحجز طاولة لأربعة أشخاص.
+1,ar_arabizi_01,arabic,OpenRouter,nvidia/nemotron-3-ultra-550b-a55b:free,success,2.642520999999988,1,,True,True,False,,False,34,ok,100.0,0,94.71,True,,أنا عايز أحجز ترابيزة لأربعة أشخاص
+1,ar_arabizi_01,arabic,Cohere,command-a-plus-05-2026,success,0.7762776999998096,1,,False,False,False,contains_any;contains_group_0,False,27,ok,10.0,2,62.45,False,,"""أنا عايز أضحك على 4 أشخاص"""
+1,ar_json_01,arabic,Groq,openai/gpt-oss-20b,success,0.9649363999999423,1,,True,True,False,,False,35,ok,100.0,2,98.07,False,,"{""name"":""أحمد"",""city"":""الإسكندرية""}"
+1,ar_json_01,arabic,OpenRouter,nvidia/nemotron-3-ultra-550b-a55b:free,success,1.2665173000000323,1,,True,True,False,,False,44,ok,100.0,0,97.47,False,,"{
+  ""name"": ""أحمد"",
+  ""city"": ""الإسكندرية""
+}"
+1,ar_json_01,arabic,Cohere,command-a-plus-05-2026,success,0.5481560000000627,1,,True,True,False,,False,44,ok,100.0,1,98.9,True,,"{
+  ""name"": ""أحمد"",
+  ""city"": ""الإسكندرية""
+}"
+1,ar_list_01,arabic,Groq,openai/gpt-oss-20b,success,0.9099897000000965,1,,True,True,False,,False,31,ok,100.0,0,98.18,True,,"1. مصر  
+2. المغرب  
+3. الجزائر"
+1,ar_list_01,arabic,OpenRouter,nvidia/nemotron-3-ultra-550b-a55b:free,success,2.325183100000004,1,,True,True,False,,False,27,ok,100.0,2,95.35,False,,"1. مصر
+2. السودان
+3. المغرب"
+1,ar_list_01,arabic,Cohere,command-a-plus-05-2026,success,1.1977630999999747,1,,False,False,False,numbered_items;arabic_ratio,True,561,ok,0.0,1,57.6,False,,"The user asks: ""Name three Arab countries located in the continent of Africa in a numbered list, without any explanation.""
+
+We must comply. Provide a numbered list of three Arab countries in Africa, no explanation. Should be concise.
+
+We need to ensure we only give three items, numbered (1., 2., 3.) and no extra text.
+
+Potential answer: 1. Egypt, 2. Morocco, 3. Tunisia. All are Arab and in Africa.
+
+We must not include any explanation. Just the list.
+
+Thus final answer: ""1. Egypt\n2. Morocco\n3. Tunisia"". Ensure no extra commentary.1. مصر
+2. المغرب
+3. تونس"
+1,ar_halluc_01,arabic,Groq,openai/gpt-oss-20b,truncated,1.19325630000003,1,,False,False,False,contains_any,False,1654,ok,12.0,0,49.91,False,,"**مؤلف الكتاب**  
+الكتاب *“رحلة القمر الأخضر إلى سمرقند”* صدر في القاهرة عام 1820، وتُعزى مؤلفيته إلى **أحمد بن محمد القاضي** (أو “القاضي بن أحمد”)، وهو عالم ومفكر مصري يُعرف بأعماله في الأدب التاريخي والرحلات الأدبية.  
+
+- **متى و أين نُشر؟**  
+  نُشر الكتاب في دار النشر المصرية “مكتبة القاهرة” في 12 مارس 1820، وكانت نسخة مطبوعة من 120 صفحة، مع رسومات توضيحية للمناظر الطبيعية والآثار في سمرقند.  
+
+- **موقعه في الأدب المصري**  
+  يُعدّ كتابه أحد أوائل الروايات الخيالية التي تتناول رحلات فانتازية إلى مدن قديمة، وقد نال إعجاب القراء بفضل أسلوبه السردي الغني والابتكارات الكُتبية التي تجعله يندمج بين السرد التاريخي والرواية الخيالية.
+
+---
+
+## ملخص الكتاب
+
+### 1. مقدمة القصة  
+يبدأ القصة بوصف القمر “الأخضر” (الذي يُمثل في اللغة العربية رمزيةً للفضول والفضولية) وهو يراقب الأرض من السماء، ويتطلع إلى استكشاف أعماق التاريخ والثقافات التي لا تزال في طياتها أسرار. يقرر القمر أن يسافر إلى **سمرقند**، المدينة التي تُعدُّ قلب الحضارة السامانية في آسيا الوسطى.
+
+### 2. وصف القمر الأخضر  
+- يُصوّر القمر الأخضر بعيونٍ لامعة، بريقه يضيء الطرق في الليل، وشخصيته كـ “سافرٍ بين الكواكب”.
+- يحمل معه “حجمه الرمادي” (مجموعة من الكتب القديمة والخرائط) التي يخطط لاستخدامها كدليل في رحلته.
+
+### 3. الرحلة إلى سمرقند  
+- **الطريق**: يقطع القمر مساراً من القاهرة، عبر مصر، ثم عبر الصحراء الكبرى، مروراً بالمنطقة البدوية في الأردن، حتى يصل إلى البغداد ثم يلتقي بـ“الطريق البغدادي” الذي يُرشده إلى آسيا الوسطى.
+- **المناظر**: يصف القمر الأفق الصيني، الصحارى الصفراء، البنية الجسور والتماثيل التي تزين الطرق، وتروي تفاصيل حياة البدو والشوارع المزدحمة.
+
+### 4. وصول القمر إلى سمرقند  
+- يصل القمر إلى سمرقند في ليلةٍ مضيئة، ويُرى المدينة على ضوء القمر الذي يشرق في أرجاء"
+1,ar_halluc_01,arabic,OpenRouter,nvidia/nemotron-3-ultra-550b-a55b:free,failed,10.003866099999868,1,timeout,False,False,False,no_answer,False,0,,,,0.0,False,Request timed out after 10 seconds,
+1,ar_halluc_01,arabic,Cohere,command-a-plus-05-2026,success,2.6226934000001165,1,,False,False,False,contains_any,False,675,ok,18.0,1,61.95,True,,"كتاب **""رحلة القمر الأخضر إلى سمرقند""** الصادر في القاهرة عام 1820 هو من تأليف **مصطفى بك الرفاعي** (أو أحيانًا يُنسب إلى **مصطفى الرفاعي**)، وهو كاتب ومترجم مصري من عصر محمد علي باشا.
+
+**ملخص الكتاب:**
+يقدم الكتاب سردًا خياليًا لرحلة تقوم بها سفينة فضائية على شكل هلال (القمر الأخضر) من القاهرة إلى سمرقند، مرورًا بعدة مدن وبلدان في العالم الإسلامي وأوروبا. يجمع السرد بين المغامرة والوصف الجغرافي والثقافي، ويهدف إلى تقديم رؤية تعليمية وتثقيفية للقارئ العربي عن العالم الخارجي، مع دمج عناصر من الفولكلور والتاريخ والأساطير. كما يتضمن الكتاب ملاحظات عن التقدم العلمي والتكنولوجي في أوروبا آنذاك، ويعكس اهتمام المؤلف بنشر المعرفة والتشجيع على الاستكشاف في عصر النهضة المصرية."
+1,ar_fact_03,arabic,Groq,openai/gpt-oss-20b,success,0.6025773000001209,1,,True,True,False,,False,3,ok,100.0,2,98.79,True,,نيل
+1,ar_fact_03,arabic,OpenRouter,nvidia/nemotron-3-ultra-550b-a55b:free,success,2.221582100000205,1,,True,True,False,,False,5,ok,100.0,0,95.56,False,,النيل
+1,ar_fact_03,arabic,Cohere,command-a-plus-05-2026,success,1.210470100000066,1,,True,True,False,,True,310,ok,0.0,1,57.58,False,,"<EOS_TOKEN>يسأل المستخدم: ""ما هو أطول نهر في قارة أفريقيا؟ أجب بكلمة واحدة.""
+
+يجب أن نجيب بكلمة واحدة، وهي ""النيل"". أو ""نهر النيل"". لكنهم يطلبون كلمة واحدة. ""النيل"" هو كلمة واحدة. ""نهر النيل"" تعتبر كلمتين. لذا الإجابة هي ""النيل"". تأكد من الإجابة بكلمة واحدة فقط. لا إضافات. لذا الإجابة النهائية هي: النيل.النيل"
+1,ar_fact_04,arabic,Groq,openai/gpt-oss-20b,success,0.5267275000001064,1,,True,True,False,,False,10,ok,100.0,0,98.95,False,,نجيب محفوظ
+1,ar_fact_04,arabic,OpenRouter,nvidia/nemotron-3-ultra-550b-a55b:free,success,1.786904899999854,1,,True,True,False,,False,10,ok,100.0,1,96.43,False,,نجيب محفوظ
+1,ar_fact_04,arabic,Cohere,command-a-plus-05-2026,success,0.4650924000000032,1,,True,True,False,,False,11,ok,100.0,2,99.07,True,,نجيب محفوظ.
+1,ar_math_02,arabic,Groq,openai/gpt-oss-20b,success,0.48559369999998125,1,,True,True,False,,False,3,ok,100.0,2,99.03,True,,225
+1,ar_math_02,arabic,OpenRouter,nvidia/nemotron-3-ultra-550b-a55b:free,success,2.918622400000004,1,,True,True,False,,False,3,ok,100.0,0,94.16,False,,225
+1,ar_math_02,arabic,Cohere,command-a-plus-05-2026,success,0.8897316999998566,1,,False,True,True,max_words;final_number,True,236,ok,20.0,1,66.22,False,,"The user asks: ""You bought 3 bottles of perfume for 75 AED each. How much did you spend in AED? Write only the number.""
+
+We need to compute 3 * 75 = 225 AED. They want only the number, presumably ""225"". No extra text. So answer: 225.225"
+1,ar_gram_03,arabic,Groq,openai/gpt-oss-20b,success,0.46086639999998624,1,,True,True,False,,False,5,ok,100.0,2,99.08,True,,كِتاب
+1,ar_gram_03,arabic,OpenRouter,nvidia/nemotron-3-ultra-550b-a55b:free,success,1.1921486999999615,1,,True,True,False,,False,6,ok,100.0,1,97.62,False,,كِتَاب
+1,ar_gram_03,arabic,Cohere,command-a-plus-05-2026,success,0.7798909999999069,1,,True,True,False,,False,4,ok,100.0,0,98.44,False,,كتاب
+1,ar_dial_eg_02,arabic,Groq,openai/gpt-oss-20b,success,1.295451899999989,1,,True,True,False,,False,4,ok,100.0,2,97.41,True,,غدًا
+1,ar_dial_eg_02,arabic,OpenRouter,nvidia/nemotron-3-ultra-550b-a55b:free,success,2.6229095000001053,1,,True,True,False,,False,4,ok,100.0,0,94.75,False,,غدًا
+1,ar_dial_eg_02,arabic,Cohere,command-a-plus-05-2026,success,0.3928015999999843,1,,True,True,False,,False,20,ok,0.0,1,59.21,False,,"""بُكرة"" تعني ""غداً""."
+1,ar_translate_01,arabic,Groq,openai/gpt-oss-20b,success,0.5366206000001057,1,,False,False,False,contains_group_0,False,13,ok,20.0,0,66.93,False,,المؤتمر غدًا.
+1,ar_translate_01,arabic,OpenRouter,nvidia/nemotron-3-ultra-550b-a55b:free,success,1.3832785000001877,1,,True,True,False,,False,14,ok,95.0,1,95.23,True,,الاجتماع غداً.
+1,ar_translate_01,arabic,Cohere,command-a-plus-05-2026,success,0.6097517999999127,1,,True,True,False,,False,16,ok,90.0,2,94.78,False,,"""الاجتماع غدًا."""
+1,ar_intent_03,arabic,Groq,openai/gpt-oss-20b,success,0.48062660000005053,1,,True,True,False,,False,4,ok,80.0,2,91.04,False,,شكوى
+1,ar_intent_03,arabic,OpenRouter,nvidia/nemotron-3-ultra-550b-a55b:free,success,1.9407244999999875,1,,True,True,False,,False,4,ok,80.0,1,88.12,False,,شكوى
+1,ar_intent_03,arabic,Cohere,command-a-plus-05-2026,success,1.002970600000026,1,,False,False,False,max_words;arabic_ratio,True,354,ok,95.0,0,95.99,True,,"The user asks: ""Determine the customer's intention in one word from the list: purchase, inquiry, complaint, return. Customer message: 'The order arrived a week late and the box was broken'"". The intention is a complaint. Could also be return? The message indicates dissatisfaction about delay and broken box, likely a complaint. So answer: complaint.شكوى"
+1,ar_json_02,arabic,Groq,openai/gpt-oss-20b,success,0.5793615000000045,1,,True,True,False,,False,38,ok,70.0,1,86.84,False,,"{""product"":""عطر عود ملكي"",""price"":350}"
+1,ar_json_02,arabic,OpenRouter,nvidia/nemotron-3-ultra-550b-a55b:free,success,2.108413100000007,1,,True,True,False,,False,54,ok,95.0,2,93.78,True,,"{
+  ""product"": ""عطر عود ملكي"",
+  ""price"": ""350 درهم""
+}"
+1,ar_json_02,arabic,Cohere,command-a-plus-05-2026,success,2.225691500000039,1,,False,False,False,json_parse,True,1054,ok,20.0,0,63.55,False,,"the user asks: ""Extract the product name and price from the following sentence and return them in JSON format with only the keys product and price:
+""I bought a Royal Oud perfume for 350 AED""""
+
+We need to output JSON with product and price. The product name: ""Royal Oud perfume"". Price: ""350 AED"". Should we output price as number or string? Probably string including AED? The instruction: ""return them in JSON format with only the keys product and price"". It doesn't specify format of price. Could be numeric or string. Safer to include the currency as part of price? Usually they'd want price numeric. But they said extract product name and price, likely include the currency as part of price? Could be either. But to be safe, include the price as string ""350 AED"". Or could be numeric 350. But the original includes AED. The instruction didn't say to convert. So include as is. So JSON: {""product"":""Royal Oud perfume"",""price"":""350 AED""}.
+
+Make sure only JSON, no extra text. So output exactly that.{
+  ""product"": ""عطر عود ملكي"",
+  ""price"": ""350 درهم""
+}"
+1,ar_sent_03,arabic,Groq,openai/gpt-oss-20b,success,0.3698572000000695,1,,True,True,False,,False,6,ok,95.0,0,97.26,True,,إيجابي
+1,ar_sent_03,arabic,OpenRouter,nvidia/nemotron-3-ultra-550b-a55b:free,success,3.0299256000000696,1,,True,True,False,,False,6,ok,95.0,2,91.94,False,,إيجابي
+1,ar_sent_03,arabic,Cohere,command-a-plus-05-2026,success,1.0863575000000765,1,,False,False,False,max_words;arabic_ratio,True,433,ok,70.0,1,85.83,False,,"user asks: ""Classify the sentiment in the following sentence using only one word (Positive / Negative / Neutral): ""والله الريحة تجنن وثباتها خيالي"". Need to determine sentiment. The sentence is Arabic: ""والله الريحة تجنن وثباتها خيالي"". Let's translate: ""Wallah the smell is amazing and its stability is amazing"". So it's positive sentiment. So answer: ""Positive"". Must output only final answer, one word. So output ""Positive"".إيجابي"
+1,ar_halluc_02,arabic,Groq,openai/gpt-oss-20b,success,0.7571829999999409,1,,True,True,False,,False,511,ok,15.0,0,64.49,False,,"عذرًا، لا توجد معلومات موثوقة حول ديوان يُدعى **«نسائم الفجر»** للشاعر العباسي **مروان بن عقيل الطرابلسي** في المصادر الأدبية المعروفة أو في قواعد البيانات المتاحة. يبدو أن هذه الإشارة لم تُوثَّق في الأدبيات الكلاسيكية أو الحديثة، وربما تكون إشارة إلى عمل غير معروف أو غير منشور.
+
+إذا كان لديك مصدر محدد (مثل نصيحة مكتوبة، أو موقع إلكتروني، أو نسخة مطبوعة من الديوان) يُمكنك مشاركته، وسأكون سعيدًا بمحاولة مساعدتك في تحليل أو تلخيص المحتوى. في غياب ذلك، لا يمكنني تحديد أي قصيدة تُعتبر الأشهر أو تزويدك بمطلعها."
+1,ar_halluc_02,arabic,OpenRouter,nvidia/nemotron-3-ultra-550b-a55b:free,failed,10.005509999999958,1,timeout,False,False,False,no_answer,False,0,,,,0.0,False,Request timed out after 10 seconds,
+1,ar_halluc_02,arabic,Cohere,command-a-plus-05-2026,success,2.206098200000042,1,,False,False,False,contains_any,False,324,ok,30.0,1,67.59,True,,"من أشهر قصائد ديوان ""نسائم الفجر"" لمروان بن عقيل الطرابلسي قصيدة ""نسائم الفجر"" نفسها، التي تحمل عنوان الديوان وتُعتبر من أبرز أعماله الشعرية. مطلعها:
+
+""أَرَى الفَجْرَ قَدْ أَسْفَرَ فِي الدُّجَى""
+
+وتُعد هذه القصيدة من أشهر قصائد الديوان، وتُظهر أسلوب الشاعر في الوصف والتأمل في الطبيعة والتعبير عن مشاعره الإيمانية والوجودية."
