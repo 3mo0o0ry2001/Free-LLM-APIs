@@ -422,3 +422,34 @@ def test_published_results_contain_no_account_ids():
     leaks = [str(p) for p in root.rglob("*") if p.is_file() and p.suffix in {".jsonl", ".csv", ".json", ".md"}
              and ACCOUNT_ID.search(p.read_text(encoding="utf-8", errors="replace"))]
     assert leaks == []
+
+
+# ============================================================
+# F11: deeply nested provider answer must not crash scoring
+# ============================================================
+
+NESTED_ARRAY = '{"name":' + "[" * 20000 + "]" * 20000 + "}"
+NESTED_OBJECT = '{"a":' * 20000 + "1" + "}" * 20000
+
+
+@pytest.mark.parametrize("answer", [NESTED_ARRAY, NESTED_OBJECT], ids=["array", "object"])
+def test_deeply_nested_json_answer_fails_the_check_instead_of_crashing(answer):
+    from evals.checks import run_checks_lenient
+
+    assert "json_parse" in run_checks(answer, {"json_fields": {"name": "x"}}, lang="en")
+    assert "json_keys_exact" in run_checks(answer, {"json_keys_exact": ["name"]}, lang="en")
+    assert "json_parse" in run_checks_lenient(answer, {"json_fields": {"name": "x"}}, lang="en")
+
+
+@pytest.mark.parametrize("answer", [NESTED_ARRAY, NESTED_OBJECT], ids=["array", "object"])
+def test_arabic_runner_json_parser_survives_deep_nesting(answer):
+    import run_arabic_eval
+
+    assert run_arabic_eval.extract_json_obj(answer) is None
+
+
+def test_normal_json_answers_still_parse():
+    from evals.checks import extract_json_obj
+
+    assert extract_json_obj('Here: ```json\n{"name": "Ahmed", "city": "Cairo"}\n```') == {"name": "Ahmed", "city": "Cairo"}
+    assert run_checks('{"name": "Ahmed"}', {"json_fields": {"name": "Ahmed"}}, lang="en") == []

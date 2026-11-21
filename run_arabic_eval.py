@@ -49,14 +49,17 @@ def arabic_ratio(text: str) -> float:
     return ar / (ar + lat) if (ar + lat) else 0.0
 
 
+MAX_JSON_SCAN_CHARS = 20_000  # json.loads raises RecursionError on very deep nesting; a host can ignore max_tokens
+
+
 def extract_json_obj(text: str):
-    text = re.sub(r"```(?:json)?", "", text)
+    text = re.sub(r"```(?:json)?", "", text[:MAX_JSON_SCAN_CHARS])
     match = re.search(r"\{.*\}", text, re.S)
     if not match:
         return None
     try:
         return json.loads(match.group(0))
-    except json.JSONDecodeError:
+    except (json.JSONDecodeError, RecursionError, ValueError):
         return None
 
 
