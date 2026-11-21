@@ -25,7 +25,7 @@ from pathlib import Path
 
 import app
 
-from evals import analyze
+from evals import analyze, safe_paths
 
 RESULT_FIELDS = [
     "provider", "model", "status", "latency", "timeout", "attempts", "finish_reason",
@@ -60,10 +60,10 @@ def provider_snapshot() -> dict:
 
 
 def done_keys(raw_path: Path) -> set[tuple[int, str]]:
-    if not raw_path.exists():
+    if not safe_paths.exists(raw_path.parent, raw_path.name):
         return set()
     keys = set()
-    with raw_path.open(encoding="utf-8") as f:
+    with safe_paths.open_read(raw_path.parent, raw_path.name) as f:
         for line in f:
             if line.strip():
                 rec = json.loads(line)
@@ -103,9 +103,10 @@ async def run_all(questions, args, raw_path: Path):
     already = done_keys(raw_path)
     todo = [(r, q) for r, q in todo if (r, q["id"]) not in already]
     print(f"{len(already)} already done, {len(todo)} to run.")
-    deferred_path = raw_path.with_name("rate_limited.jsonl")
+    run_dir = raw_path.parent
+    safe_paths.entry(run_dir, "rate_limited.jsonl")
     streak = 0
-    with raw_path.open("a", encoding="utf-8") as f:
+    with safe_paths.open_append(run_dir, raw_path.name) as f:
         for n, (run_idx, item) in enumerate(todo, 1):
             rec = await run_one(item, run_idx, args.seed, not args.no_judge)
             limited = [r["provider"] for r in rec["results"]
@@ -113,7 +114,7 @@ async def run_all(questions, args, raw_path: Path):
             if limited and not args.keep_rate_limited:
                 # Quota errors are not model failures: set the record aside
                 # (kept for transparency) so a later resume re-asks it.
-                with deferred_path.open("a", encoding="utf-8") as d:
+                with safe_paths.open_append(run_dir, "rate_limited.jsonl") as d:
                     d.write(json.dumps(rec, ensure_ascii=False) + "\n")
                 streak += 1
                 print(f"[{n}/{len(todo)}] run={run_idx} {item['id']:<18} DEFERRED rate limit: {', '.join(limited)}",
@@ -147,13 +148,18 @@ def main():
     ap.add_argument("--categories", default="", help="comma-separated subset of categories")
     ap.add_argument("--limit", type=int, default=0, help="only the first N questions (smoke test)")
     ap.add_argument("--no-judge", action="store_true", help="skip the LLM judge (saves Groq quota)")
-    ap.add_argument("--no-exec", action="store_true", help="analysis: do not execute model-written code")
+    ap.add_argument("--exec", action="store_true",
+                    help="analysis: execute model-written code (untrusted code on this machine; off by default)")
+    ap.add_argument("--no-exec", action="store_true", help="analysis: do not execute model-written code (the default)")
     ap.add_argument("--stop-after-rate-limits", type=int, default=3,
                     help="stop after this many consecutive rate-limited questions")
     ap.add_argument("--keep-rate-limited", action="store_true",
                     help="record rate-limited questions as failures instead of deferring them")
     ap.add_argument("--out-dir", default="eval_results/runs")
     args = ap.parse_args()
+    allow_exec = args.exec and not args.no_exec
+    if allow_exec:
+        print(analyze.EXEC_WARNING, file=sys.stderr)
 
     if args.providers:
         wanted = {p.strip().lower() for p in args.providers.split(",") if p.strip()}
@@ -177,6 +183,11 @@ def main():
 
     run_dir = Path(args.out_dir) / args.run_id
     run_dir.mkdir(parents=True, exist_ok=True)
+    try:
+        for name in ("config.json", "raw.jsonl", "rate_limited.jsonl", *analyze.OUTPUT_FILES):
+            safe_paths.entry(run_dir, name)
+    except safe_paths.UnsafePathError as e:
+        sys.exit(f"Refusing to use {run_dir}: {e}")
     cfg_path = run_dir / "config.json"
     config = {
         "run_id": args.run_id,
@@ -194,7 +205,7 @@ def main():
         "platform": platform.platform(),
     }
     if cfg_path.exists():
-        old = json.loads(cfg_path.read_text(encoding="utf-8"))
+        old = json.loads(safe_paths.read_text(run_dir, "config.json"))
         for key in ("question_set_sha256", "question_ids", "providers", "judge_model", "seed"):
             if old.get(key) != config[key]:
                 sys.exit(f"Cannot resume {args.run_id}: '{key}' differs from the saved config. "
@@ -203,7 +214,7 @@ def main():
         config["resumed_at"] = old.get("resumed_at", []) + [time.strftime("%Y-%m-%dT%H:%M:%S")]
     else:
         config["created_at"] = time.strftime("%Y-%m-%dT%H:%M:%S")
-    cfg_path.write_text(json.dumps(config, ensure_ascii=False, indent=2), encoding="utf-8")
+    safe_paths.write_text(run_dir, "config.json", json.dumps(config, ensure_ascii=False, indent=2))
 
     print(f"Run {args.run_id}: {len(questions)} questions x {args.runs} run(s), "
           f"providers: {', '.join(app.PROVIDERS)}")
@@ -214,11 +225,10 @@ def main():
               f"(same flags)")
         return
 
-    raw = run_dir / "raw.jsonl"
-    if not raw.exists() or not raw.read_text(encoding="utf-8").strip():
+    if not safe_paths.exists(run_dir, "raw.jsonl") or not safe_paths.read_text(run_dir, "raw.jsonl").strip():
         print("Nothing scored yet, so no results to analyze.")
         return
-    analyze.analyze(run_dir, set_path, allow_exec=not args.no_exec)
+    analyze.analyze(run_dir, set_path, allow_exec=allow_exec)
 
 
 if __name__ == "__main__":

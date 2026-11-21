@@ -18,16 +18,30 @@ intervals that resample questions (all repetitions of a question together).
 
 import argparse
 import csv
+import io
 import json
+import os
 import random
 import statistics
 import sys
 from collections import Counter, defaultdict
-from pathlib import Path
+from pathlib import Path, PureWindowsPath
 
+from evals import safe_paths
+from sanitize import strip_control
 from evals.checks import LEAK_PATTERN, run_checks, run_checks_lenient
 
 BOOTSTRAP_ITERS = 2000
+OUTPUT_FILES = ("summary.json", "answers.csv", "failures_for_review.csv", "results.md")
+REPO_ROOT = Path(__file__).resolve().parents[1]
+QUESTION_SET_DIR = REPO_ROOT / "evals"
+
+EXEC_WARNING = (
+    "WARNING: --exec runs model-written code on this machine. The child process gets a minimal "
+    "environment (no API keys) and a temporary working directory, but this is NOT a sandbox: the "
+    "code can still read and write your files and use the network. Only use --exec on answers you "
+    "generated yourself, and use a container or VM for real isolation."
+)
 BOOTSTRAP_SEED = 7
 USABLE = {"success", "truncated"}
 
@@ -119,9 +133,30 @@ def error_kind(status, error):
     return "other_error"
 
 
+def question_set_from_config(value) -> Path:
+    """
+    Resolve config.json's question_set, which comes from the run directory and is
+    therefore untrusted. Only files inside the repository's evals/ directory are
+    accepted; UNC paths (which on Windows would open a network share) are refused
+    before anything touches the filesystem. An explicit --set skips this check.
+    """
+    if not isinstance(value, str) or not value.strip():
+        raise safe_paths.UnsafePathError("config.json has no question_set")
+    if value.startswith(("\\\\", "//")) or PureWindowsPath(value).drive.startswith("\\\\"):
+        raise safe_paths.UnsafePathError(f"question_set {value!r} is a UNC/network path")
+    path = Path(value if os.name == "nt" else value.replace("\\", "/"))
+    if not path.is_absolute():
+        path = REPO_ROOT / path
+    resolved = path.resolve()
+    if not resolved.is_relative_to(QUESTION_SET_DIR.resolve()) or not resolved.is_file():
+        raise safe_paths.UnsafePathError(
+            f"question_set {value!r} is not a file inside {QUESTION_SET_DIR}; pass --set to choose another file")
+    return resolved
+
+
 def load(run_dir: Path, set_path: Path | None, allow_exec: bool):
-    config = json.loads((run_dir / "config.json").read_text(encoding="utf-8"))
-    set_path = set_path or Path(config["question_set"])
+    config = json.loads(safe_paths.read_text(run_dir, "config.json"))
+    set_path = set_path or question_set_from_config(config.get("question_set"))
     questions = {}
     with set_path.open(encoding="utf-8") as f:
         for line in f:
@@ -129,7 +164,7 @@ def load(run_dir: Path, set_path: Path | None, allow_exec: bool):
                 q = json.loads(line)
                 questions[q["id"]] = q
     records = []
-    with (run_dir / "raw.jsonl").open(encoding="utf-8") as f:
+    with safe_paths.open_read(run_dir, "raw.jsonl") as f:
         for line in f:
             if line.strip():
                 records.append(json.loads(line))
@@ -403,8 +438,11 @@ def md_table(headers, rows):
 def write_markdown(path, config, ptable, router, cats, audit, n_answers):
     runs = config["runs"]
     expected = len(config["question_ids"]) * runs
-    deferred_file = path.with_name("rate_limited.jsonl")
-    deferred = sum(1 for l in deferred_file.open(encoding="utf-8") if l.strip()) if deferred_file.exists() else 0
+    if safe_paths.exists(path.parent, "rate_limited.jsonl"):
+        with safe_paths.open_read(path.parent, "rate_limited.jsonl") as d:
+            deferred = sum(1 for l in d if l.strip())
+    else:
+        deferred = 0
     complete = router["questions_scored"]
     status_line = (f"- Completeness: {complete}/{expected} question-runs scored"
                    + ("" if complete == expected else " (**incomplete run: numbers are partial**)")
@@ -497,24 +535,29 @@ def write_markdown(path, config, ptable, router, cats, audit, n_answers):
         "- Ties in the final score go to the provider listed first in `PROVIDER_CONFIG`.",
         "",
     ]
-    path.write_text("\n".join(lines), encoding="utf-8")
+    safe_paths.write_text(path.parent, path.name, "\n".join(lines))
 
 
 def write_csvs(run_dir, answers):
     cols = ["run", "id", "category", "provider", "model", "status", "latency_s", "attempts", "error_kind",
             "passed", "passed_lenient", "rescued_by_lenient", "failed_checks", "leaked_reasoning", "length_chars", "judge_status", "judge_score",
             "judge_position", "final_score", "router_best", "error", "answer"]
-    with (run_dir / "answers.csv").open("w", newline="", encoding="utf-8-sig") as f:
-        w = csv.DictWriter(f, fieldnames=cols, extrasaction="ignore")
-        w.writeheader()
-        w.writerows(answers)
-    with (run_dir / "failures_for_review.csv").open("w", newline="", encoding="utf-8-sig") as f:
-        w = csv.DictWriter(f, fieldnames=cols + ["check_was_wrong (fill in y/n)"], extrasaction="ignore")
-        w.writeheader()
-        w.writerows(a for a in answers if not a["passed"] and a["status"] in USABLE)
+    f = io.StringIO(newline="")
+    w = csv.DictWriter(f, fieldnames=cols, extrasaction="ignore")
+    w.writeheader()
+    w.writerows(answers)
+    safe_paths.write_text(run_dir, "answers.csv", f.getvalue(), encoding="utf-8-sig", newline="")
+    f = io.StringIO(newline="")
+    w = csv.DictWriter(f, fieldnames=cols + ["check_was_wrong (fill in y/n)"], extrasaction="ignore")
+    w.writeheader()
+    w.writerows(a for a in answers if not a["passed"] and a["status"] in USABLE)
+    safe_paths.write_text(run_dir, "failures_for_review.csv", f.getvalue(), encoding="utf-8-sig", newline="")
 
 
-def analyze(run_dir: Path, set_path: Path | None = None, allow_exec: bool = True, quiet: bool = False):
+def analyze(run_dir: Path, set_path: Path | None = None, allow_exec: bool = False, quiet: bool = False):
+    # Fail before any check runs if an input or output name is a link or escapes the directory.
+    for name in ("config.json", "raw.jsonl", "rate_limited.jsonl", *OUTPUT_FILES):
+        safe_paths.entry(run_dir, name)
     config, _questions, answers, qrows = load(run_dir, set_path, allow_exec)
     if not answers:
         sys.exit("raw.jsonl is empty.")
@@ -524,11 +567,11 @@ def analyze(run_dir: Path, set_path: Path | None = None, allow_exec: bool = True
     audit = judge_audit(qrows)
     summary = {"run_id": config["run_id"], "exec_enabled": allow_exec, "router": router,
                "providers": ptable, "accuracy_by_category_%": cats, "judge_audit": audit}
-    (run_dir / "summary.json").write_text(json.dumps(summary, ensure_ascii=False, indent=2), encoding="utf-8")
+    safe_paths.write_text(run_dir, "summary.json", json.dumps(summary, ensure_ascii=False, indent=2))
     write_csvs(run_dir, answers)
     write_markdown(run_dir / "results.md", config, ptable, router, cats, audit, len(answers))
     if not quiet:
-        print((run_dir / "results.md").read_text(encoding="utf-8"))
+        print(strip_control(safe_paths.read_text(run_dir, "results.md")))
         print(f"Wrote {run_dir / 'results.md'}, summary.json, answers.csv, failures_for_review.csv")
     return summary
 
@@ -538,9 +581,17 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("run_dir")
     ap.add_argument("--set", default=None, help="override the question set path saved in config.json")
-    ap.add_argument("--no-exec", action="store_true", help="do not execute model-written code")
+    ap.add_argument("--exec", action="store_true",
+                    help="execute model-written code from raw.jsonl (untrusted code on this machine; off by default)")
+    ap.add_argument("--no-exec", action="store_true", help="do not execute model-written code (the default)")
     args = ap.parse_args()
-    analyze(Path(args.run_dir), Path(args.set) if args.set else None, allow_exec=not args.no_exec)
+    allow_exec = args.exec and not args.no_exec
+    if allow_exec:
+        print(EXEC_WARNING, file=sys.stderr)
+    try:
+        analyze(Path(args.run_dir), Path(args.set) if args.set else None, allow_exec=allow_exec)
+    except safe_paths.UnsafePathError as e:
+        sys.exit(f"Refusing to analyze {args.run_dir}: {e}")
 
 
 if __name__ == "__main__":

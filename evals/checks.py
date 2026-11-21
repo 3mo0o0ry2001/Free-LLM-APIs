@@ -13,6 +13,7 @@ An empty list means the answer passed.
 import json
 import os
 import re
+import secrets
 import subprocess
 import sys
 import tempfile
@@ -78,6 +79,17 @@ LEAK_PATTERN = re.compile(
 CODE_BLOCK = re.compile(r"```[ \t]*(?:python|py|python3)?[ \t]*\n(.*?)```", re.S | re.I)
 CODE_TIMEOUT_S = 10
 
+# Only what the interpreter needs to start (SYSTEMROOT is required on Windows).
+# Everything else, including the provider API keys loaded from .env, is left out.
+CHILD_ENV_KEYS = ("PATH", "SYSTEMROOT")
+
+
+def child_env(tmp: str) -> dict:
+    """Minimal environment for model-written code: no secrets, home and temp in `tmp`."""
+    env = {k: os.environ[k] for k in CHILD_ENV_KEYS if k in os.environ}
+    env.update(HOME=tmp, USERPROFILE=tmp, TEMP=tmp, TMP=tmp, TMPDIR=tmp)
+    return env
+
 
 def extract_code(answer: str, entry: str) -> str:
     """Pick the fenced block that defines `entry`; fall back to raw text."""
@@ -98,12 +110,21 @@ def run_python_tests(answer: str, spec: dict) -> bool:
     """
     Execute model-written code plus hidden asserts in a child process.
 
-    This runs code produced by an LLM on your machine. It is isolated only
-    by a temp working directory, `python -I`, no stdin and a timeout.
-    Use --no-exec in the runner to skip coding checks.
+    This runs code produced by an LLM on your machine, so it only happens when
+    the caller passes allow_exec=True (the --exec flag). The child gets a
+    minimal environment (no API keys, HOME and TEMP inside a fresh temp
+    directory), that directory as its cwd, `python -I`, no stdin and a hard
+    timeout. That reduces risk but it is NOT a sandbox: the code can still read
+    and write any file your account can, and use the network. Real isolation
+    needs a container or VM with no network and no access to your files.
     """
     code = extract_code(answer, spec["entry"])
-    program = f"{code}\n\n# ---- hidden tests ----\n{spec['tests']}\nprint('__ALL_TESTS_PASSED__')\n"
+    # Fresh marker per execution, printed only after every hidden assert has run.
+    # It is never sent to a model. Limitation: it is written into the same file
+    # as the candidate code, so code that deliberately reads its own source
+    # (__file__) can still find it. This stops blind spoofing, not a targeted attack.
+    marker = f"__PASS_{secrets.token_hex(16)}__"
+    program = f"{code}\n\n# ---- hidden tests ----\n{spec['tests']}\nprint({marker!r})\n"
     with tempfile.TemporaryDirectory() as tmp:
         path = os.path.join(tmp, "candidate.py")
         with open(path, "w", encoding="utf-8") as f:
@@ -112,6 +133,7 @@ def run_python_tests(answer: str, spec: dict) -> bool:
             proc = subprocess.run(
                 [sys.executable, "-I", path],
                 cwd=tmp,
+                env=child_env(tmp),
                 stdin=subprocess.DEVNULL,
                 capture_output=True,
                 text=True,
@@ -121,14 +143,15 @@ def run_python_tests(answer: str, spec: dict) -> bool:
             )
         except subprocess.TimeoutExpired:
             return False
-    return proc.returncode == 0 and "__ALL_TESTS_PASSED__" in proc.stdout
+    lines = proc.stdout.strip().splitlines()
+    return proc.returncode == 0 and bool(lines) and lines[-1].strip() == marker
 
 
 # ============================================================
 # CHECKS
 # ============================================================
 
-def run_checks(answer: str, checks: dict, lang: str = "en", allow_exec: bool = True) -> list[str]:
+def run_checks(answer: str, checks: dict, lang: str = "en", allow_exec: bool = False) -> list[str]:
     """Return a list of failed check names (empty list = pass)."""
     failed = []
     norm = normalize(answer)
@@ -262,7 +285,7 @@ def tail_answer(answer: str, expected_number=None) -> str:
     return tail
 
 
-def run_checks_lenient(answer: str, checks: dict, lang: str = "en", allow_exec: bool = True) -> list[str]:
+def run_checks_lenient(answer: str, checks: dict, lang: str = "en", allow_exec: bool = False) -> list[str]:
     """Strict checks first; if they fail and the question wants a short answer, score the tail."""
     failed = run_checks(answer, checks, lang, allow_exec)
     if not failed or not lenient_applies(checks):

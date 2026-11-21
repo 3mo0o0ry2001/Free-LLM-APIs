@@ -18,8 +18,9 @@ def test_set_shape():
 
 @pytest.mark.parametrize("item", ITEMS, ids=[i["id"] for i in ITEMS])
 def test_reference_passes_and_wrong_fails(item):
-    assert run_checks(item["reference"], item["checks"], item["lang"]) == []
-    assert run_checks(item["wrong"], item["checks"], item["lang"]) != []
+    # Code execution is opt-in; the reference set is ours, so run the coding checks.
+    assert run_checks(item["reference"], item["checks"], item["lang"], allow_exec=True) == []
+    assert run_checks(item["wrong"], item["checks"], item["lang"], allow_exec=True) != []
 
 
 @pytest.mark.parametrize("answer,expected,ok", [
@@ -51,14 +52,15 @@ def test_extract_code_prefers_block_with_entry():
 def test_code_check_with_explanation_and_main_guard():
     ans = ("Here you go:\n```python\ndef gcd(a, b):\n    while b:\n        a, b = b, a % b\n    return a\n\n"
            "if __name__ == '__main__':\n    print(gcd(4, 6))\n```\nThis uses Euclid.")
-    assert run_checks(ans, {"python_tests": {"entry": "gcd", "tests": "assert gcd(48, 18) == 6"}}) == []
+    assert run_checks(ans, {"python_tests": {"entry": "gcd", "tests": "assert gcd(48, 18) == 6"}},
+                      allow_exec=True) == []
 
 
 def test_code_check_infinite_loop_times_out(monkeypatch):
     import evals.checks as c
     monkeypatch.setattr(c, "CODE_TIMEOUT_S", 1)
     ans = "def f():\n    while True:\n        pass"
-    assert run_checks(ans, {"python_tests": {"entry": "f", "tests": "f()"}}) == ["python_tests"]
+    assert run_checks(ans, {"python_tests": {"entry": "f", "tests": "f()"}}, allow_exec=True) == ["python_tests"]
 
 
 def test_code_check_skipped_without_exec():

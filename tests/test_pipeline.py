@@ -51,7 +51,8 @@ class FakeResponses:
         if "impartial evaluator" in input:
             self.judge_inputs.append(input)
             prompt = input.split("Original user request:\n", 1)[1].split("\n\nEvaluate every answer", 1)[0]
-            blocks = re.findall(r"--- Answer ([A-Z]) ---\n(.*?)\n(?=\n--- Answer|\Z)", input, re.S)
+            blocks = re.findall(r"<<<BEGIN ANSWER ([A-Z]) (\w+)>>>\n(.*?)\n<<<END ANSWER \1 \2>>>", input, re.S)
+            blocks = [(lab, txt) for lab, _boundary, txt in blocks]
             scores = {lab: (90 if txt.strip() == REF[prompt].strip() else 30) for lab, txt in blocks}
             return SimpleNamespace(output_text=json.dumps(scores), status="completed", incomplete_details=None)
         status = "incomplete" if self.incomplete else "completed"
@@ -84,7 +85,7 @@ def run_cli(monkeypatch, tmp_path, *extra):
 
 
 def test_full_pipeline_and_resume(fake_providers, monkeypatch, tmp_path, capsys):
-    run_dir = run_cli(monkeypatch, tmp_path)
+    run_dir = run_cli(monkeypatch, tmp_path, "--exec")
     raw = (run_dir / "raw.jsonl").read_text(encoding="utf-8").splitlines()
     assert len(raw) == 100
 

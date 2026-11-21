@@ -209,7 +209,8 @@ python -m pip install -r requirements-dev.txt
 python -m pytest                                                     # offline, no API calls
 python -m evals.run --limit 3 --run-id smoke                         # quick check with real APIs
 python -m evals.run --run-id v1                                      # full run; rerun the same command to resume
-python -m evals.analyze eval_results/runs/v1                         # re-score saved outputs, no API calls
+python -m evals.analyze eval_results/runs/v1                         # re-score saved outputs, no API calls, coding questions skipped
+python -m evals.analyze eval_results/runs/v1 --exec                  # also run the 20 coding checks (see the notes below)
 ```
 
 Each run folder in `eval_results/runs/<run-id>/` contains:
@@ -230,7 +231,8 @@ The judge audit reports how often the judge scores the correct answer above the 
 Notes:
 
 - The judge shuffles answer order with a seed (`--seed`). Set `JUDGE_MODEL` to use a Groq model that is not a contestant.
-- Coding checks execute model-written code on your machine. Use `--no-exec` to skip them; the analysis then drops the coding questions.
+- Coding checks execute model-written code, so they are off by default. Pass `--exec` to `evals.run` or `evals.analyze` to run them; without it the analysis drops the coding questions (`--no-exec` is still accepted and means the same as the default). The published v1 numbers were produced with code execution on.
+- With `--exec`, each answer runs in a child Python process with a minimal environment (only `PATH`, plus `SYSTEMROOT` on Windows; no API keys), with `HOME` and `TEMP` pointing at a fresh temporary directory that is also its working directory, and a 10 second timeout. This lowers the risk but it is not a sandbox: the code still runs as your user, can read and write your files and can use the network. Only use `--exec` on answers you generated yourself. For real isolation run the analysis inside a container or VM with no network and no access to your home folder.
 - Free tiers: a full run makes about 100 calls per provider and about 200 to Groq (contestant + judge). Use `--providers` to leave out a provider whose daily quota is too small.
 
 ## Security
@@ -238,6 +240,10 @@ Notes:
 - `.env` and `.env.*` are ignored by Git; `.env.example` is the only exception.
 - The repository should contain variable names and placeholders only, never real API keys.
 - If a key is exposed, revoke it in the provider dashboard before doing anything else. Removing it from the latest commit is not enough because Git history may retain it.
+- Treat a run folder you did not create (from a pull request or a download) as untrusted. `evals.run` and `evals.analyze` refuse run folders whose files are symbolic links or point outside the folder, write their outputs to a new file and then move it into place, and only accept a `question_set` from `config.json` that is a file inside `evals/` (UNC and other absolute paths are refused; pass `--set` to choose a different file yourself).
+- Model output and run-folder text are printed with terminal escape sequences and control characters removed, so an answer cannot change your clipboard, window title or earlier lines on screen.
+- Saved provider error bodies have account identifiers (`user_id`, `org_id` and similar) replaced with `[redacted]` before they are written to `raw.jsonl`, `rate_limited.jsonl` or the CSV files.
+- The judge prompt wraps each answer between markers that carry a random boundary, removes that boundary from the answer text, and tells the judge that the content is data, not instructions. This reduces prompt injection from a contestant's answer but does not eliminate it: a model can still try to persuade the judge, so treat judge scores as a secondary signal next to the deterministic checks.
 
 ## Project structure
 

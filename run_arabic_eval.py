@@ -23,6 +23,7 @@ from collections import defaultdict
 from pathlib import Path
 
 import app  # Router module: PROVIDERS, ask_all_models, evaluate_quality, apply_final_scores
+from sanitize import strip_control
 
 # ============================================================
 # ARABIC NORMALIZATION
@@ -227,7 +228,7 @@ def print_summary(summary, category_table):
         print(" | ".join(str(s[c]) for c in cols))
     for s in summary:
         if s["first_error"]:
-            print(f"\n[ERROR] {s['provider']} ({s['model']}): {s['first_error']}")
+            print(f"\n[ERROR] {s['provider']} ({strip_control(s['model'])}): {strip_control(s['first_error'])}")
     print("\n=== Pass rate by category (%) ===")
     for cat, provs in category_table.items():
         print(f"{cat:24s} " + "  ".join(f"{p}={v}" for p, v in sorted(provs.items())))
